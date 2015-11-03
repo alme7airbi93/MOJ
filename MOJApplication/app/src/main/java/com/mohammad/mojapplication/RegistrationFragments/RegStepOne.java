@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mohammad.mojapplication.R;
 
@@ -20,6 +21,8 @@ public class RegStepOne extends Fragment {
     private TextView tvID;
     private EditText etID;
     private Button btnNextID;
+    private Communicator communicator;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,13 +37,28 @@ public class RegStepOne extends Fragment {
         tvID = (TextView)v.findViewById(R.id.tvID);
         etID = (EditText)v.findViewById(R.id.etNID);
         btnNextID = (Button)v.findViewById(R.id.btnNextID);
-
-
-
+        communicator = (Communicator) getActivity();
 
         return v;
 
-
     }
+
+    public void sendDataToStepTwo()
+    {
+        btnNextID.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try{
+                    communicator.sendData(tvID.getText().toString());
+                }
+                catch (NullPointerException e)
+                {
+                    Toast.makeText(getActivity(),"Please fill the gaps",Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
+    }
+
 
 }

@@ -5,5 +5,6 @@ package com.mohammad.mojapplication.RegistrationFragments;
  */
 public interface Communicator {
 
-    String a = "a";
+
+    public void sendData(String string);
 }

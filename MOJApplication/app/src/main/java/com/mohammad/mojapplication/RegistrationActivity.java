@@ -1,11 +1,16 @@
 package com.mohammad.mojapplication;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class RegistrationActivity extends AppCompatActivity {
+import com.mohammad.mojapplication.RegistrationFragments.Communicator;
+import com.mohammad.mojapplication.RegistrationFragments.RegStepTwo;
+
+public class RegistrationActivity extends AppCompatActivity implements Communicator {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +25,10 @@ public class RegistrationActivity extends AppCompatActivity {
         return true;
     }
 
+
+
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -33,5 +42,16 @@ public class RegistrationActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void sendData(String string) {
+
+        FragmentManager fm = getSupportFragmentManager();
+
+        RegStepTwo regStepTwo = (RegStepTwo) fm.findFragmentById(R.id.step2fragment);
+
+
+
     }
 }
