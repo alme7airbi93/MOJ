@@ -58,12 +58,12 @@ public class MOJManager
 
     private static ContentValues getContentValues(User user) {
         ContentValues values = new ContentValues();
-        values.put(UserTable.Cols.ID,user.getId().toString());
-        values.put(UserTable.Cols.NAME,user.getName().toString());
-        values.put(UserTable.Cols.MOBILE,user.getAddress().toString());
-        values.put(UserTable.Cols.ADDRESS,user.getAddress().toString());
-        values.put(UserTable.Cols.USER_NAME, user.getUserName().toString());
-        values.put(UserTable.Cols.PASS,user.getPass().toString());
+        values.put(UserTable.Cols.ID,user.getId());
+        values.put(UserTable.Cols.NAME,user.getName());
+        values.put(UserTable.Cols.MOBILE,user.getAddress());
+        values.put(UserTable.Cols.ADDRESS,user.getAddress());
+        values.put(UserTable.Cols.USER_NAME, user.getUserName());
+        values.put(UserTable.Cols.PASS,user.getPass());
 
         return values;
     }

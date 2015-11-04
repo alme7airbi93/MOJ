@@ -30,6 +30,7 @@ public class RegStepOne extends Fragment {
 
 
 
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +48,7 @@ public class RegStepOne extends Fragment {
 
 
         communicator = (Communicator) getActivity();
-
+       
 
         // SETTING THE BUTTON
         btnNextID = (Button)v.findViewById(R.id.btnNextID);
@@ -57,17 +58,22 @@ public class RegStepOne extends Fragment {
 
                 //  communicator.sendData(etID.getText().toString());
 
-                User user = new User("555", "mohammad", "050", "MBZ", "username", "pass");
+                User user = new User("9000", "mohammad", "050", "MBZ", "username", "pass");
                 mojManager.addUser(user);
-                user = mojManager.findUserById("555");
-                Toast.makeText(getActivity(), user.getMobile().toString(), Toast.LENGTH_LONG).show();
+                mojManager.findUserById("9000");
+                Toast.makeText(getActivity(),user.getMobile().toString(),Toast.LENGTH_LONG).show();
+
 
 
             }
         });
+
+
         return v;
 
     }
+
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
