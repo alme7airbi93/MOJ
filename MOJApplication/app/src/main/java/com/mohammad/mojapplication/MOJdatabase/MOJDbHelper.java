@@ -25,7 +25,7 @@ public class MOJDbHelper extends SQLiteOpenHelper
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("create table "+ UserTable.NAME+"(_id integer primary key autoincrement, "+
+        db.execSQL("create table "+ UserTable.NAME+"(_id integer primary key autoincrement,"+
                 Cols.ID+ ","  +
                 Cols.NAME + ","+
                 Cols.MOBILE+","+
@@ -33,7 +33,7 @@ public class MOJDbHelper extends SQLiteOpenHelper
                 Cols.USER_NAME+","+
                 Cols.PASS +")");
 
-        db.execSQL("create table "+ EmiratesIDTable.NAME+"(_id integer primary key autoincrement, "+
+        db.execSQL("create table "+ EmiratesIDTable.NAME+"(_id integer primary key autoincrement,"+
                 EmiratesIDTable.Cols.ID+ ","  +
                 EmiratesIDTable.Cols.NAME + ","+
                 EmiratesIDTable.Cols.MOBILE+","+

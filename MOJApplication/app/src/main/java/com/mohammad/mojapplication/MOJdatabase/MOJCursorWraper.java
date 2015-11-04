@@ -13,12 +13,12 @@ import java.util.UUID;
 /**
  * Created by user on 10/28/2015.
  */
-public class CursorWraper extends CursorWrapper {
+public class MOJCursorWraper extends CursorWrapper {
 
 
 
 
-    public CursorWraper(Cursor cursor)
+    public MOJCursorWraper(Cursor cursor)
     {
         super(cursor);
     }

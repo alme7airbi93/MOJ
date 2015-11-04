@@ -27,6 +27,7 @@ public class RegStepTwo extends Fragment {
 
     }
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,6 +35,7 @@ public class RegStepTwo extends Fragment {
         btnNextSMS = (Button)v.findViewById(R.id.btnNextSMS);
         etSMSCode = (EditText) v.findViewById(R.id.etSMS);
         etSMSCode.setText(IDNumber);
+
 
         return v;
     }

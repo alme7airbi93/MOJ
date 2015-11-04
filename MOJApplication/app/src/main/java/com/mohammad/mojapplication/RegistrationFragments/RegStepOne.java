@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mohammad.mojapplication.MOJManager;
+import com.mohammad.mojapplication.Objects.User;
 import com.mohammad.mojapplication.R;
 
 /**
@@ -19,16 +21,19 @@ import com.mohammad.mojapplication.R;
  */
 public class RegStepOne extends Fragment {
 
-    private TextView tvID;
+
+
     private EditText etID;
     private Button btnNextID;
     private Communicator communicator;
-    private String idNumber;
+   private MOJManager mojManager;
+
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+       mojManager = MOJManager.getMOJManager(getActivity());
 
     }
 
@@ -37,7 +42,29 @@ public class RegStepOne extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_reg_step_one_layout,container,false);
 
+        //getting the string
+        etID = (EditText)v.findViewById(R.id.etNID);
 
+
+        communicator = (Communicator) getActivity();
+
+
+        // SETTING THE BUTTON
+        btnNextID = (Button)v.findViewById(R.id.btnNextID);
+        btnNextID.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //  communicator.sendData(etID.getText().toString());
+
+                User user = new User("555", "mohammad", "050", "MBZ", "username", "pass");
+                mojManager.addUser(user);
+                user = mojManager.findUserById("555");
+                Toast.makeText(getActivity(), user.getMobile().toString(), Toast.LENGTH_LONG).show();
+
+
+            }
+        });
         return v;
 
     }
@@ -45,40 +72,11 @@ public class RegStepOne extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        tvID = (TextView)getActivity().findViewById(R.id.tvID);
-        etID = (EditText)getActivity().findViewById(R.id.etNID);
-        btnNextID = (Button)getActivity().findViewById(R.id.btnNextID);
-        communicator = (Communicator) getActivity();
-        idNumber = etID.getText().toString();
 
-        // sendDataToStepTwo(idNumber);
-        btnNextID.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                communicator.sendData("123");
-
-            }
-        });
 
     }
 
-    public void sendDataToStepTwo(String idNum)
-    {
-        btnNextID.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try{
-                    communicator.sendData("");
-                }
-                catch (NullPointerException e)
-                {
-                    Toast.makeText(getActivity(),"Please fill the gaps",Toast.LENGTH_LONG).show();
-                }
 
-            }
-        });
-    }
 
 
 }

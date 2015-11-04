@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.mohammad.mojapplication.MOJdatabase.MOJDbHelper;
 import com.mohammad.mojapplication.RegistrationFragments.Communicator;
 import com.mohammad.mojapplication.RegistrationFragments.RegStepOne;
 import com.mohammad.mojapplication.RegistrationFragments.RegStepTwo;
@@ -21,6 +22,8 @@ public class RegistrationActivity extends AppCompatActivity implements Communica
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         startStepOne();
+
+
     }
 
     @Override
