@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.mohammad.mojapplication.MOJdatabase.MOJCursorWraper;
 import com.mohammad.mojapplication.MOJdatabase.MOJDbHelper;
 import com.mohammad.mojapplication.MOJdatabase.MOJDbSchema;
+import com.mohammad.mojapplication.Objects.NIDCard;
 import com.mohammad.mojapplication.Objects.User;
 
 import java.util.List;
@@ -86,6 +87,58 @@ public class MOJManager
 
             cursorWraper.moveToFirst();
             return cursorWraper.getUser();
+        }
+        finally {
+            cursorWraper.close();
+        }
+
+
+    }
+
+
+    //  NATIONAL ID DATABASE -----------------------------------------------------------------------
+
+    private MOJCursorWraper querryEmiratesIDTable(String whereClause,String[] whereArgs) {
+        Cursor cursor = database.query(
+                EmiratesIDTable.NAME,
+                null,
+                whereClause,
+                whereArgs,
+                null,
+                null,
+                null);
+        return new MOJCursorWraper(cursor);
+
+    }
+
+    private static ContentValues getContentValuesNID(NIDCard nidCard) {
+        ContentValues values = new ContentValues();
+        values.put(EmiratesIDTable.Cols.ID,nidCard.getId());
+        values.put(EmiratesIDTable.Cols.NAME,nidCard.getName());
+        values.put(EmiratesIDTable.Cols.ADDRESS,nidCard.getAddress());
+        values.put(EmiratesIDTable.Cols.DOB,nidCard.getDob().getTime());
+        values.put(EmiratesIDTable.Cols.MOBILE,nidCard.getMobile());
+        return values;
+    }
+
+    public void addNIDCard(NIDCard nidCard) {
+        ContentValues values = getContentValuesNID(nidCard);
+        database.insert(EmiratesIDTable.NAME, null, values);
+    }
+
+    public NIDCard findNIDCardById(String  id) {
+        MOJCursorWraper cursorWraper =
+                querryEmiratesIDTable(EmiratesIDTable.Cols.ID + " = ?", new String[]{id.toString()});
+
+        try
+        {
+            if(cursorWraper.getCount() == 0)
+            {
+                return null;
+            }
+
+            cursorWraper.moveToFirst();
+            return cursorWraper.getNID();
         }
         finally {
             cursorWraper.close();

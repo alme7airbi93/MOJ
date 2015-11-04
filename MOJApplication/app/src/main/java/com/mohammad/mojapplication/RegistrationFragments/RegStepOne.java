@@ -3,6 +3,7 @@ package com.mohammad.mojapplication.RegistrationFragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +14,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mohammad.mojapplication.MOJManager;
+import com.mohammad.mojapplication.Objects.NIDCard;
 import com.mohammad.mojapplication.Objects.User;
 import com.mohammad.mojapplication.R;
+
+import java.util.Date;
+import java.util.Random;
 
 /**
  * Created by user on 11/1/2015.
@@ -26,7 +31,7 @@ public class RegStepOne extends Fragment {
     private EditText etID;
     private Button btnNextID;
     private Communicator communicator;
-   private MOJManager mojManager;
+    private MOJManager mojManager;
 
 
 
@@ -35,6 +40,7 @@ public class RegStepOne extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        mojManager = MOJManager.getMOJManager(getActivity());
+
 
     }
 
@@ -50,19 +56,25 @@ public class RegStepOne extends Fragment {
         communicator = (Communicator) getActivity();
        
 
+
+
         // SETTING THE BUTTON
         btnNextID = (Button)v.findViewById(R.id.btnNextID);
         btnNextID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(etID.getText().toString().length() == 15) {
 
-                //  communicator.sendData(etID.getText().toString());
+                      communicator.sendData(etID.getText().toString());
 
-                User user = new User("9000", "mohammad", "050", "MBZ", "username", "pass");
-                mojManager.addUser(user);
-                mojManager.findUserById("9000");
-                Toast.makeText(getActivity(),user.getMobile().toString(),Toast.LENGTH_LONG).show();
 
+                   // Toast.makeText(getActivity(),rand+"",Toast.LENGTH_LONG).show();
+
+                }else
+                {
+                    Toast.makeText(getActivity(),"Please be sure you write the currect number",Toast.LENGTH_LONG).show();
+                    return;
+                }
 
 
             }
