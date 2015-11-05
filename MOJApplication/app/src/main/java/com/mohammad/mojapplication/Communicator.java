@@ -9,7 +9,8 @@ public interface Communicator {
 
 
     public void sendData(String string);
-
     public void sendNIDcardObject(NIDCard nidCard);
-    public void startGreetingClass();
+    public void startWelcomeFragment();
+    public void stopWelcomeFragment();
+    public void startStepOne();
 }
