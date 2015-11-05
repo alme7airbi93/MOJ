@@ -26,34 +26,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         tabHostAdding();
-
-
-
-
-
-
-
 
     }
 
 
-
-
-
-
-//
-//    private void resetColor(TabHost tabHost,String oncolor,String w){
-//
-//
-//        tabHost.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#000"));
-//        tabHost.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#000"));
-//        tabHost.getTabWidget().getChildAt(2).setBackgroundColor(Color.parseColor("#000"));
-//        tabHost.getTabWidget().getChildAt(3).setBackgroundColor(Color.parseColor("#000"));
-//
-//    }
     private void tabHostAdding()
     {
 

@@ -3,23 +3,19 @@ package com.mohammad.mojapplication.RegistrationFragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.telephony.SmsManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mohammad.mojapplication.Communicator;
 import com.mohammad.mojapplication.MOJManager;
 import com.mohammad.mojapplication.Objects.NIDCard;
-import com.mohammad.mojapplication.Objects.User;
 import com.mohammad.mojapplication.R;
 
 import java.util.Date;
-import java.util.Random;
 
 /**
  * Created by user on 11/1/2015.

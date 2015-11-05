@@ -1,5 +1,6 @@
 package com.mohammad.mojapplication.RegistrationFragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,9 +12,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.mohammad.mojapplication.MOJManager;
+import com.mohammad.mojapplication.MainActivity;
 import com.mohammad.mojapplication.Objects.NIDCard;
 import com.mohammad.mojapplication.Objects.User;
 import com.mohammad.mojapplication.R;
+import com.mohammad.mojapplication.RegistrationActivity;
 
 /**
  * Created by user on 11/1/2015.
@@ -57,6 +60,9 @@ public class RegStepThree extends Fragment
                     User user = new User(nidCard.getId(), nidCard.getName(), nidCard.getMobile(),
                             nidCard.getAddress(), etUserName.getText().toString(), etPass.getText().toString());
                     mojManager.addUser(user);
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    getActivity().startActivity(intent);
+                    getActivity().finish();
 
                     Toast.makeText(getActivity(),"Your Account Added",Toast.LENGTH_LONG).show();
 

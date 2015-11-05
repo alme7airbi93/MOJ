@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.mohammad.mojapplication.Communicator;
 import com.mohammad.mojapplication.MOJManager;
 import com.mohammad.mojapplication.Objects.NIDCard;
 import com.mohammad.mojapplication.R;

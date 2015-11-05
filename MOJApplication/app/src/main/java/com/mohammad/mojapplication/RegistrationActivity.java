@@ -1,6 +1,5 @@
 package com.mohammad.mojapplication;
 
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -8,9 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.mohammad.mojapplication.MOJdatabase.MOJDbHelper;
 import com.mohammad.mojapplication.Objects.NIDCard;
-import com.mohammad.mojapplication.RegistrationFragments.Communicator;
 import com.mohammad.mojapplication.RegistrationFragments.RegStepOne;
 import com.mohammad.mojapplication.RegistrationFragments.RegStepThree;
 import com.mohammad.mojapplication.RegistrationFragments.RegStepTwo;

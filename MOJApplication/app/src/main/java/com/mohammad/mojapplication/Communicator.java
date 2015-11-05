@@ -1,4 +1,4 @@
-package com.mohammad.mojapplication.RegistrationFragments;
+package com.mohammad.mojapplication;
 
 import com.mohammad.mojapplication.Objects.NIDCard;
 
