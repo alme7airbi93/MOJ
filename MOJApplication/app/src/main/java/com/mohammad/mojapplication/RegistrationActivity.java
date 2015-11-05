@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.mohammad.mojapplication.Objects.NIDCard;
+import com.mohammad.mojapplication.RegistrationFragments.Login;
 import com.mohammad.mojapplication.RegistrationFragments.RegStepOne;
 import com.mohammad.mojapplication.RegistrationFragments.RegStepThree;
 import com.mohammad.mojapplication.RegistrationFragments.RegStepTwo;
@@ -84,12 +85,12 @@ public class RegistrationActivity extends AppCompatActivity implements Communica
     {
         Welcome welcome = new Welcome();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.add(R.id.registrationActivityLayout, welcome, "wlc");
+        transaction.add(R.id.registrationActivityLayout, welcome, "WLC");
         transaction.commit();
     }
     @Override
     public void stopWelcomeFragment() {
-        Welcome welcome = (Welcome) manager.findFragmentByTag("wlc");
+        Welcome welcome = (Welcome) manager.findFragmentByTag("WLC");
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.remove(welcome);
         transaction.commit();
@@ -103,6 +104,16 @@ public class RegistrationActivity extends AppCompatActivity implements Communica
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.add(R.id.registrationActivityLayout, regStepOne, "FS1");
         transaction.commit();
+    }
+
+    @Override
+    public void startLogin()
+    {
+        Login login = new Login();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.add(R.id.registrationActivityLayout, login, "LOG");
+        transaction.commit();
+
     }
 
     public void stopStepOne() {

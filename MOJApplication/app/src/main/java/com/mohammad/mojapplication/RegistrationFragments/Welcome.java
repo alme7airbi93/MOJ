@@ -17,8 +17,8 @@ import com.mohammad.mojapplication.R;
 public class Welcome extends Fragment
 {
 
-    Button btnReg;
-    Button btnLog;
+    private Button btnReg;
+    private Button btnLog;
     Communicator comm;
 
     @Nullable
@@ -27,6 +27,7 @@ public class Welcome extends Fragment
     {
         View v = inflater.inflate(R.layout.fragment_welcome, container, false);
 
+        comm = (Communicator) getActivity();
         btnReg = (Button) v.findViewById(R.id.btnReg);
 
         btnReg.setOnClickListener(new View.OnClickListener()
@@ -35,8 +36,23 @@ public class Welcome extends Fragment
             public void onClick(View v)
             {
 
-                comm = (Communicator) getActivity();
                 comm.startStepOne();
+                comm.stopWelcomeFragment();
+
+
+            }
+        });
+
+        btnLog = (Button) v.findViewById(R.id.btnLogin);
+
+        btnLog.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+
+
+                comm.startLogin();
                 comm.stopWelcomeFragment();
 
 

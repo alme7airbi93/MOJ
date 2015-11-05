@@ -13,4 +13,5 @@ public interface Communicator {
     public void startWelcomeFragment();
     public void stopWelcomeFragment();
     public void startStepOne();
+    public void startLogin();
 }
