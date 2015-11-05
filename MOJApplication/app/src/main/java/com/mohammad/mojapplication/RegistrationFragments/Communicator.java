@@ -11,4 +11,5 @@ public interface Communicator {
     public void sendData(String string);
 
     public void sendNIDcardObject(NIDCard nidCard);
+    public void startGreetingClass();
 }

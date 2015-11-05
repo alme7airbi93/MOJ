@@ -80,6 +80,11 @@ public class RegistrationActivity extends AppCompatActivity implements Communica
 
     }
 
+    @Override
+    public void startGreetingClass() {
+
+    }
+
     public void startStepOne()
     {
         RegStepOne regStepOne = new RegStepOne();

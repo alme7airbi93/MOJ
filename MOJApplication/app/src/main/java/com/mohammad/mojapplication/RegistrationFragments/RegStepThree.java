@@ -8,9 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.mohammad.mojapplication.MOJManager;
 import com.mohammad.mojapplication.Objects.NIDCard;
+import com.mohammad.mojapplication.Objects.User;
 import com.mohammad.mojapplication.R;
 
 /**
@@ -23,6 +25,11 @@ public class RegStepThree extends Fragment
     private MOJManager mojManager;
     private NIDCard nidCard;
 
+    public void reciveNIDCardObject(NIDCard nidCard)
+    {
+
+        this.nidCard = nidCard;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,20 +41,32 @@ public class RegStepThree extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_reg_step_three_layout, container, false);
-
-
+        final NIDCard nidCard = this.nidCard;
         etPass = (EditText) v.findViewById(R.id.etPass);
         etUserName = (EditText) v.findViewById(R.id.etUser);
-
         btnFinish = (Button) v.findViewById(R.id.btnFinish);
+        btnFinish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(etPass.getText().toString().equals("") && etUserName.getText().toString().equals(""))
+                {
+                    Toast.makeText(getActivity(),"Please fill the empty spaces",Toast.LENGTH_LONG).show();
+
+                }else {
+
+                    User user = new User(nidCard.getId(), nidCard.getName(), nidCard.getMobile(),
+                            nidCard.getAddress(), etUserName.getText().toString(), etPass.getText().toString());
+                    mojManager.addUser(user);
+
+                    Toast.makeText(getActivity(),"Your Account Added",Toast.LENGTH_LONG).show();
+
+                }
+            }
+        });
 
 
         return v;
     }
 
-    public void reciveNIDCardObject(NIDCard nidCard)
-    {
 
-        this.nidCard = nidCard;
-    }
 }

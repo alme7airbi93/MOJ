@@ -40,7 +40,7 @@ public class RegStepOne extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        mojManager = MOJManager.getMOJManager(getActivity());
-
+        mojManager.addNIDCard(new NIDCard("784199553043524","ali","0566201995","alnahyan",new Date()));
     }
 
     @Nullable
