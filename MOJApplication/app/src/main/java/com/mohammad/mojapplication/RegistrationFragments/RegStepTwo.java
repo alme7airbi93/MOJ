@@ -27,6 +27,7 @@ public class RegStepTwo extends Fragment {
     private String IDNumber ;
     private MOJManager mojManager;
     private String randomNumber;
+    private Communicator communicator;
 
     public void reciveIDNumber(String idNumber) {
 
@@ -43,8 +44,9 @@ public class RegStepTwo extends Fragment {
         mojManager = MOJManager.getMOJManager(getActivity());
         btnNextSMS = (Button)v.findViewById(R.id.btnNextSMS);
         etSMSCode = (EditText)v.findViewById(R.id.etSMS);
+        communicator = (Communicator) getActivity();
 
-        NIDCard nidCard = mojManager.findNIDCardById(IDNumber);
+        final NIDCard nidCard = mojManager.findNIDCardById(IDNumber);
         String mobile = nidCard.getMobile();
 
         Random ran = new Random();
@@ -59,10 +61,10 @@ public class RegStepTwo extends Fragment {
             public void onClick(View v) {
 
                 if (etSMSCode.getText().toString().equals(randomNumber)) {
-                    Toast.makeText(getActivity(), "GO HOME ", Toast.LENGTH_LONG).show();
+                    communicator.sendNIDcardObject(nidCard);
                 }
                 else {
-                    Toast.makeText(getActivity(), "Dont go ", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Write the code !", Toast.LENGTH_LONG).show();
                 }
             }
         });

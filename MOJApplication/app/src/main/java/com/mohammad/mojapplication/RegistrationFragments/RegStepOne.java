@@ -41,7 +41,6 @@ public class RegStepOne extends Fragment {
         super.onCreate(savedInstanceState);
        mojManager = MOJManager.getMOJManager(getActivity());
 
-
     }
 
     @Nullable
@@ -52,7 +51,7 @@ public class RegStepOne extends Fragment {
         //getting the string
         etID = (EditText)v.findViewById(R.id.etNID);
 
-
+        // initialzing communicator
         communicator = (Communicator) getActivity();
        
 
@@ -66,9 +65,6 @@ public class RegStepOne extends Fragment {
                 if(etID.getText().toString().length() == 15) {
 
                       communicator.sendData(etID.getText().toString());
-
-
-                   // Toast.makeText(getActivity(),rand+"",Toast.LENGTH_LONG).show();
 
                 }else
                 {

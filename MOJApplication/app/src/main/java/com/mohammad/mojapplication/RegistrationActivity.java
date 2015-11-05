@@ -9,8 +9,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.mohammad.mojapplication.MOJdatabase.MOJDbHelper;
+import com.mohammad.mojapplication.Objects.NIDCard;
 import com.mohammad.mojapplication.RegistrationFragments.Communicator;
 import com.mohammad.mojapplication.RegistrationFragments.RegStepOne;
+import com.mohammad.mojapplication.RegistrationFragments.RegStepThree;
 import com.mohammad.mojapplication.RegistrationFragments.RegStepTwo;
 
 public class RegistrationActivity extends AppCompatActivity implements Communicator {
@@ -67,6 +69,17 @@ public class RegistrationActivity extends AppCompatActivity implements Communica
 
     }
 
+    @Override
+    public void sendNIDcardObject(NIDCard nidCard) {
+        RegStepThree regStepThree = new RegStepThree();
+        regStepThree.reciveNIDCardObject(nidCard);
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.add(R.id.registrationActivityLayout, regStepThree, "FS3");
+        transaction.commit();
+        stopStepTwo();
+
+    }
+
     public void startStepOne()
     {
         RegStepOne regStepOne = new RegStepOne();
@@ -79,6 +92,12 @@ public class RegistrationActivity extends AppCompatActivity implements Communica
         RegStepOne regStepOne = (RegStepOne) manager.findFragmentByTag("FS1");
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.remove(regStepOne);
+        transaction.commit();
+    }
+    public void stopStepTwo() {
+        RegStepTwo regStepTwo = (RegStepTwo)manager.findFragmentByTag("FS2");
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.remove(regStepTwo);
         transaction.commit();
     }
 
