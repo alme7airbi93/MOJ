@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mohammad.mojapplication.MOJManager;
 import com.mohammad.mojapplication.MainActivity;
 import com.mohammad.mojapplication.Objects.User;
 import com.mohammad.mojapplication.R;
@@ -21,6 +22,7 @@ public class CaseTrackingFragment extends Fragment {
 
     private User logedInUser;
     private TextView tvUserName;
+    private MOJManager mojManager;
 
 
     @Nullable
@@ -34,10 +36,11 @@ public class CaseTrackingFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        logedInUser = MainActivity.user;
+        String id = getActivity().getIntent().getStringExtra("userID");
+         mojManager = MOJManager.getMOJManager(getActivity());
+        logedInUser = mojManager.findUserById(id);
         tvUserName = (TextView)getActivity().findViewById(R.id.tvUserName);
-        tvUserName.setText(logedInUser.getMobile().toString());
+        tvUserName.setText(logedInUser.getName().toString());
 
     }
 }

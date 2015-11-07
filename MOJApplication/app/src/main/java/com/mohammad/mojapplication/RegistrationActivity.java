@@ -24,9 +24,9 @@ import java.io.Serializable;
 
 public class RegistrationActivity extends AppCompatActivity implements Communicator
 {
-
+    private MOJManager mojManager;
     private User user;
-     private FragmentManager manager = getSupportFragmentManager();
+    private FragmentManager manager = getSupportFragmentManager();
 
 
     @Override
