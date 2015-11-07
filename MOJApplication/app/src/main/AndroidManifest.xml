@@ -17,7 +17,7 @@
 
         </activity>
         <activity
-            android:name=".RegistrationActivity"
+            android:name=".SplachClass"
             android:label="@string/title_activity_registration"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -25,6 +25,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".RegistrationActivity"
+            android:label="@string/title_activity_registration"
+            android:screenOrientation="portrait">
+
         </activity>
     </application>
 
