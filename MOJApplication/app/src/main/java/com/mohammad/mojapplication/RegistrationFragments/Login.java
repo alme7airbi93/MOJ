@@ -44,7 +44,7 @@ public class Login extends Fragment
     {
         View v = inflater.inflate(R.layout.fragment_login, container, false);
         etUserName = (EditText)v.findViewById(R.id.etUserLog);
-        etPass = (EditText)v.findViewById(R.id.etPassLog);
+        etPass = (EditText) v.findViewById(R.id.etPassLog);
         comm = (Communicator)getActivity();
         btnSignIn = (Button) v.findViewById(R.id.btnSignIn);
         mojManager = MOJManager.getMOJManager(getActivity());
@@ -61,10 +61,16 @@ public class Login extends Fragment
                 try{
 
                     user = mojManager.findUserByUserName(etUserName.getText().toString());
+                    String pass = user.getPass().toString();
                    if(user != null)
                    {
-
-                       comm.sendUsertoMainActivity(user);
+                       if(pass.equals(etPass.getText().toString()))
+                       {
+                           comm.sendUsertoMainActivity(user);
+                       }else
+                       {
+                           Toast.makeText(getActivity(),etPass.getText().toString() +" password incorrect" + pass,Toast.LENGTH_LONG).show();
+                       }
                    }
                 }
                 catch (NullPointerException npe)

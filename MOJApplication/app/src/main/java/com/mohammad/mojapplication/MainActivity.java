@@ -27,20 +27,14 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity {
     private MOJManager mojManager;
     public LinearLayout tab1;
-//    public static User user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        String id = getIntent().getStringExtra("userID");
-//        mojManager = MOJManager.getMOJManager(this);
-//        user = mojManager.findUserById(id);
         tabHostAdding();
     }
-
-
-
 
     private void tabHostAdding()
     {
