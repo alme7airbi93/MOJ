@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.mohammad.mojapplication.Objects.NIDCard;
 import com.mohammad.mojapplication.Objects.User;
@@ -17,6 +18,8 @@ import com.mohammad.mojapplication.RegistrationFragments.RegStepThree;
 import com.mohammad.mojapplication.RegistrationFragments.RegStepTwo;
 import com.mohammad.mojapplication.RegistrationFragments.Welcome;
 
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 import java.io.Serializable;
 
 public class RegistrationActivity extends AppCompatActivity implements Communicator
@@ -43,8 +46,10 @@ public class RegistrationActivity extends AppCompatActivity implements Communica
 
     @Override
     public void sendUsertoMainActivity(User user) {
-        this.user = user;
+
+
         Intent i = new Intent(this, MainActivity.class);
+        i.putExtra("userID", user.getId().toString());
         startActivity(i);
         this.finish();
     }

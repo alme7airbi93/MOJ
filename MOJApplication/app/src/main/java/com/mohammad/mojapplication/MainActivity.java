@@ -20,25 +20,26 @@ import com.mohammad.mojapplication.Objects.User;
 import com.mohammad.mojapplication.mainActivityFragments.CaseTrackingFragment;
 import com.mohammad.mojapplication.mainActivityFragments.NewsFragment;
 
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-
+    private MOJManager mojManager;
     public LinearLayout tab1;
-    private User user;
+    public static User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if(savedInstanceState != null)
-        {
-            this.user = (User) savedInstanceState.getSerializable("123");
-        }
-
+        String id = getIntent().getStringExtra("userID");
+        mojManager = MOJManager.getMOJManager(this);
+        user = mojManager.findUserById(id);
         tabHostAdding();
-
     }
+
+
 
 
     private void tabHostAdding()

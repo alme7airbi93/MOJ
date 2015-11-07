@@ -35,8 +35,9 @@ public class CaseTrackingFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-//        logedInUser = MainActivity.user;
+        logedInUser = MainActivity.user;
         tvUserName = (TextView)getActivity().findViewById(R.id.tvUserName);
+        tvUserName.setText(logedInUser.getMobile().toString());
 
     }
 }
