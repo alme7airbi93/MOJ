@@ -1,6 +1,8 @@
 package com.mohammad.mojapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -8,51 +10,45 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.mohammad.mojapplication.Objects.NIDCard;
+import com.mohammad.mojapplication.Objects.User;
 import com.mohammad.mojapplication.RegistrationFragments.Login;
 import com.mohammad.mojapplication.RegistrationFragments.RegStepOne;
 import com.mohammad.mojapplication.RegistrationFragments.RegStepThree;
 import com.mohammad.mojapplication.RegistrationFragments.RegStepTwo;
 import com.mohammad.mojapplication.RegistrationFragments.Welcome;
 
+import java.io.Serializable;
+
 public class RegistrationActivity extends AppCompatActivity implements Communicator
 {
 
-
+    private User user;
      private FragmentManager manager = getSupportFragmentManager();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-       startWelcomeFragment();
+        startWelcomeFragment();
 
 
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_registration, menu);
-        return true;
+    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
+        super.onCreate(savedInstanceState, persistentState);
+        savedInstanceState.putSerializable("123", (Serializable) user);
     }
-
-
-
-
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    public void sendUsertoMainActivity(User user) {
+        this.user = user;
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+        this.finish();
     }
+
 
     @Override
     public void sendData(String string) {

@@ -95,6 +95,27 @@ public class MOJManager
 
     }
 
+    public User findUserByUserName(String  userName) {
+        MOJCursorWraper cursorWraper =
+                querryUserTable(UserTable.Cols.USER_NAME + " = ?", new String[]{userName});
+
+        try
+        {
+            if(cursorWraper.getCount() == 0)
+            {
+                return null;
+            }
+
+            cursorWraper.moveToFirst();
+            return cursorWraper.getUser();
+        }
+        finally {
+            cursorWraper.close();
+        }
+
+
+    }
+
 
     //  NATIONAL ID DATABASE -----------------------------------------------------------------------
 
