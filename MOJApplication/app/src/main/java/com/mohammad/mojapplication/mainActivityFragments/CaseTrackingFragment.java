@@ -39,8 +39,8 @@ public class CaseTrackingFragment extends Fragment {
         String id = getActivity().getIntent().getStringExtra("userID");
         mojManager = MOJManager.getMOJManager(getActivity());
         logedInUser = mojManager.findUserById(id);
-        tvUserName = (TextView)getActivity().findViewById(R.id.tvUserName);
-        tvUserName.setText(logedInUser.getName());
+        /*tvUserName = (TextView)getActivity().findViewById(R.id.tvUserName);
+        tvUserName.setText(logedInUser.getName());*/
 
     }
 }

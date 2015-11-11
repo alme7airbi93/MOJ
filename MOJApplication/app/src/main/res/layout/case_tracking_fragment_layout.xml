@@ -1,8 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e59fff">
+    android:background="#fffffa">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cases List"
+            android:textSize="30dp"
+            android:background="#05835a"
+            android:textColor="#ffffff"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:background="#ffffff">
+
+    </android.support.v7.widget.RecyclerView>
 
    
-</android.support.v7.widget.RecyclerView>
+</LinearLayout>
