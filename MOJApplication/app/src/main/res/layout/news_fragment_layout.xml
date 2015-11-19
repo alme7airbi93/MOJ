@@ -2,13 +2,36 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#11bc17">
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MOJ Tweets"
+            android:textSize="30dp"
+            android:background="#05835a"
+            android:textColor="#ffffff"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+    <TextView android:id="@id/android:empty"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/tweet_layout"></LinearLayout>
+        android:gravity="center_horizontal|center_vertical"
+        android:text="No Tweets"/>
+
+    <ListView android:id="@id/android:list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="#e1e8ed"
+        android:dividerHeight="1dp"
+        android:drawSelectorOnTop="false"/>
 </LinearLayout>
