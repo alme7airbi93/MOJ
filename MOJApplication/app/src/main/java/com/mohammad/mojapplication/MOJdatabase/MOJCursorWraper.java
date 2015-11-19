@@ -5,6 +5,7 @@ import android.database.CursorWrapper;
 
 
 import com.mohammad.mojapplication.Objects.NIDCard;
+import com.mohammad.mojapplication.Objects.Service;
 import com.mohammad.mojapplication.Objects.User;
 
 import java.util.Date;
@@ -31,9 +32,10 @@ public class MOJCursorWraper extends CursorWrapper {
         String address = getString(getColumnIndex(MOJDbSchema.UserTable.Cols.ADDRESS));
         String username = getString(getColumnIndex(MOJDbSchema.UserTable.Cols.USER_NAME));
         String pass = getString(getColumnIndex(MOJDbSchema.UserTable.Cols.PASS));
+        String servicePass = getString(getColumnIndex(MOJDbSchema.UserTable.Cols.SERVICEPASS));
 
 
-        User user = new User(id,name,mobile,address,username,pass);
+        User user = new User(id,name,mobile,address,username,pass,servicePass);
 
 
         return user;
@@ -54,6 +56,22 @@ public class MOJCursorWraper extends CursorWrapper {
 
 
         return nidCard;
+
+    }
+
+    public Service getService()
+    {
+        String userID = getString(getColumnIndex(MOJDbSchema.ServiceTable.Cols.USERID));
+        String serviceType = getString(getColumnIndex(MOJDbSchema.ServiceTable.Cols.TYPE));
+        String serviceID = getString(getColumnIndex(MOJDbSchema.ServiceTable.Cols.SERVICEID));
+        long date = getLong(getColumnIndex(MOJDbSchema.ServiceTable.Cols.DATE));
+        String serviceStatus = getString(getColumnIndex(MOJDbSchema.ServiceTable.Cols.SERVICESTATUS));
+
+
+        Service service = new Service(userID, serviceType, serviceID, new Date(date), serviceStatus);
+
+
+        return service;
 
     }
 }

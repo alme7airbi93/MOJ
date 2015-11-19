@@ -11,14 +11,16 @@ public class User {
     private String address;
     private String userName;
     private String pass;
+    private String servicePass;
 
-    public User(String id, String name, String mobile, String address, String userName, String pass) {
+    public User(String id, String name, String mobile, String address, String userName, String pass,String servicePass) {
         this.id = id;
         this.name = name;
         this.mobile = mobile;
         this.address = address;
         this.userName = userName;
         this.pass = pass;
+        this.servicePass = servicePass;
     }
 
     public String getId() {
@@ -45,6 +47,8 @@ public class User {
         this.mobile = mobile;
     }
 
+
+
     public String getAddress() {
         return address;
     }
@@ -67,5 +71,13 @@ public class User {
 
     public void setPass(String pass) {
         this.pass = pass;
+    }
+
+    public String getServicePass() {
+        return servicePass;
+    }
+
+    public void setServicePass(String servicePass) {
+        this.servicePass = servicePass;
     }
 }

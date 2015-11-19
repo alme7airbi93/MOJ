@@ -31,7 +31,8 @@ public class MOJDbHelper extends SQLiteOpenHelper
                 Cols.MOBILE+","+
                 Cols.ADDRESS + ","+
                 Cols.USER_NAME+","+
-                Cols.PASS +")");
+                Cols.PASS+","+
+                Cols.SERVICEPASS +")");
 
         db.execSQL("create table "+ EmiratesIDTable.NAME+"(_id integer primary key autoincrement,"+
                 EmiratesIDTable.Cols.ID+ ","  +
@@ -39,7 +40,20 @@ public class MOJDbHelper extends SQLiteOpenHelper
                 EmiratesIDTable.Cols.MOBILE+","+
                 EmiratesIDTable.Cols.ADDRESS + ","+
                 EmiratesIDTable.Cols.DOB +")");
+
+
+        db.execSQL("create table "+ MOJDbSchema.ServiceTable.NAME+"(_id integer primary key autoincrement,"+
+                MOJDbSchema.ServiceTable.Cols.USERID + ","  +
+                MOJDbSchema.ServiceTable.Cols.TYPE + ","  +
+                MOJDbSchema.ServiceTable.Cols.SERVICEID + ","+
+                MOJDbSchema.ServiceTable.Cols.DATE + ","+
+                MOJDbSchema.ServiceTable.Cols.SERVICESTATUS +")");
     }
+
+
+
+
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

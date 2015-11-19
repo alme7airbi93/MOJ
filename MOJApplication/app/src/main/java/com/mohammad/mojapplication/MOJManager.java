@@ -9,6 +9,7 @@ import com.mohammad.mojapplication.MOJdatabase.MOJCursorWraper;
 import com.mohammad.mojapplication.MOJdatabase.MOJDbHelper;
 import com.mohammad.mojapplication.MOJdatabase.MOJDbSchema;
 import com.mohammad.mojapplication.Objects.NIDCard;
+import com.mohammad.mojapplication.Objects.Service;
 import com.mohammad.mojapplication.Objects.User;
 
 import java.util.List;
@@ -65,6 +66,7 @@ public class MOJManager
         values.put(UserTable.Cols.ADDRESS,user.getAddress());
         values.put(UserTable.Cols.USER_NAME, user.getUserName());
         values.put(UserTable.Cols.PASS,user.getPass());
+        values.put(UserTable.Cols.SERVICEPASS,user.getServicePass());
 
         return values;
     }
@@ -160,6 +162,58 @@ public class MOJManager
 
             cursorWraper.moveToFirst();
             return cursorWraper.getNID();
+        }
+        finally {
+            cursorWraper.close();
+        }
+
+
+    }
+
+//-------------------------------------Service Database---------------------------------------------------
+private MOJCursorWraper querryServiceTable(String whereClause,String[] whereArgs) {
+    Cursor cursor = database.query(
+            ServiceTable.NAME,
+            null,
+            whereClause,
+            whereArgs,
+            null,
+            null,
+            null);
+    return new MOJCursorWraper(cursor);
+
+}
+
+    private static ContentValues getContentValuesService(Service service) {
+        ContentValues values = new ContentValues();
+        values.put(ServiceTable.Cols.USERID,service.getUserID());
+        values.put(ServiceTable.Cols.TYPE,service.getType());
+        values.put(ServiceTable.Cols.SERVICEID,service.getServiceID());
+        values.put(ServiceTable.Cols.DATE,service.getDate().getTime());
+        values.put(ServiceTable.Cols.SERVICESTATUS,service.getServiceStatus());
+
+
+        return values;
+    }
+
+    public void addService(Service service) {
+        ContentValues values = getContentValuesService(service);
+        database.insert(ServiceTable.NAME, null, values);
+    }
+
+    public User findServiceById(String  id) {
+        MOJCursorWraper cursorWraper =
+                querryUserTable(ServiceTable.Cols.SERVICEID + " = ?", new String[]{id.toString()});
+
+        try
+        {
+            if(cursorWraper.getCount() == 0)
+            {
+                return null;
+            }
+
+            cursorWraper.moveToFirst();
+            return cursorWraper.getUser();
         }
         finally {
             cursorWraper.close();
