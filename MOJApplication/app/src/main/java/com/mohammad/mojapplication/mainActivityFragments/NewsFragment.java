@@ -2,6 +2,7 @@ package com.mohammad.mojapplication.mainActivityFragments;
 
 
 import android.app.ListActivity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -42,7 +43,8 @@ import io.fabric.sdk.android.Fabric;
 public class NewsFragment extends ListFragment {
 
     private LinearLayout tweetLayout;
-    private  ArrayList<Tweet> tweets;
+    private ArrayList<Tweet> tweets;
+    private ProgressDialog progressDialog;
 
     // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
     private static final String TWITTER_KEY = "EBzSEIofSqYUFPzRxsf3P9kQH";
@@ -68,8 +70,11 @@ public class NewsFragment extends ListFragment {
 
         TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
         Fabric.with(getActivity(), new TwitterCore(authConfig), new TweetUi());
-
-
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setCancelable(false);
+        progressDialog.setTitle("News");
+        progressDialog.setMessage("Getting News ...");
+        progressDialog.show();
 
         final UserTimeline userTimeline = new UserTimeline.Builder()
                 .screenName("moj_uae")
@@ -79,7 +84,34 @@ public class NewsFragment extends ListFragment {
                 .build();
         setListAdapter(adapter);
 
+
+        new Thread() {
+
+            public void run() {
+
+                try{
+
+                    sleep(5000);
+
+                } catch (Exception e) {
+
+                    Log.e("tag", e.getMessage());
+
+                }
+
+                // dismiss the progress dialog
+
+                progressDialog.dismiss();
+
+            }
+
+        }.start();
+
         return v;
 
     }
+
+
+
+
 }

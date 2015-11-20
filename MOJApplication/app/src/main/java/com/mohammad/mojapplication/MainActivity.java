@@ -1,5 +1,6 @@
 package com.mohammad.mojapplication;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -34,10 +35,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tabHostAdding();
+
+
+
     }
+
 
     private void tabHostAdding()
     {
+
+
 
         tab1= (LinearLayout)findViewById(R.id.tab1);
         final TabHost tabHost = (TabHost)findViewById(R.id.tabHost);
@@ -68,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        tabHost.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#FFFFFF"));
+        tabHost.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#18000001"));
         tabHost.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#FFFFFF"));
         tabHost.getTabWidget().getChildAt(2).setBackgroundColor(Color.parseColor("#FFFFFF"));
         tabHost.getTabWidget().getChildAt(3).setBackgroundColor(Color.parseColor("#FFFFFF"));
@@ -80,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 if(tabHost.getCurrentTab() == 0)
                 {
                     //resetColor(tabHost);
-                    tabHost.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#FF6666"));
+                    tabHost.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#18000001"));
                     tabHost.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#FFFFFF"));
                     tabHost.getTabWidget().getChildAt(2).setBackgroundColor(Color.parseColor("#FFFFFF"));
                     tabHost.getTabWidget().getChildAt(3).setBackgroundColor(Color.parseColor("#FFFFFF"));
@@ -92,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                 if(tabHost.getCurrentTab() == 1)
                 {
                     //resetColor(tabHost);
-                    tabHost.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#FFFFB3"));
+                    tabHost.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#18000001"));
                     tabHost.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#FFFFFF"));
                     tabHost.getTabWidget().getChildAt(2).setBackgroundColor(Color.parseColor("#FFFFFF"));
                     tabHost.getTabWidget().getChildAt(3).setBackgroundColor(Color.parseColor("#FFFFFF"));
@@ -104,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                 if(tabHost.getCurrentTab() == 2)
                 {
                     //resetColor(tabHost);
-                    tabHost.getTabWidget().getChildAt(2).setBackgroundColor(Color.parseColor("#93FF6E"));
+                    tabHost.getTabWidget().getChildAt(2).setBackgroundColor(Color.parseColor("#18000001"));
                     tabHost.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#FFFFFF"));
                     tabHost.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#FFFFFF"));
                     tabHost.getTabWidget().getChildAt(3).setBackgroundColor(Color.parseColor("#FFFFFF"));
@@ -115,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
                 if(tabHost.getCurrentTab() == 3)
                 {
                     //resetColor(tabHost);
-                    tabHost.getTabWidget().getChildAt(3).setBackgroundColor(Color.parseColor("#4D94FF"));
+                    tabHost.getTabWidget().getChildAt(3).setBackgroundColor(Color.parseColor("#18000001"));
                     tabHost.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#FFFFFF"));
                     tabHost.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#FFFFFF"));
                     tabHost.getTabWidget().getChildAt(2).setBackgroundColor(Color.parseColor("#FFFFFF"));
