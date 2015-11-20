@@ -6,8 +6,10 @@ import android.os.PersistableBundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.mohammad.mojapplication.Objects.NIDCard;
@@ -27,6 +29,13 @@ public class RegistrationActivity extends AppCompatActivity implements Communica
     private MOJManager mojManager;
     private User user;
     private FragmentManager manager = getSupportFragmentManager();
+    private Welcome welcome;
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        return (keyCode == KeyEvent.KEYCODE_BACK ? true : super.onKeyDown(keyCode, event));
+    }
 
 
     @Override
@@ -42,6 +51,8 @@ public class RegistrationActivity extends AppCompatActivity implements Communica
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
         savedInstanceState.putSerializable("123", (Serializable) user);
+
+
     }
 
     @Override
@@ -60,7 +71,7 @@ public class RegistrationActivity extends AppCompatActivity implements Communica
         RegStepTwo regStepTwo = new RegStepTwo();
         regStepTwo.reciveIDNumber(string);
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.add(R.id.registrationActivityLayout,regStepTwo,"FS2");
+        transaction.add(R.id.registrationActivityLayout, regStepTwo, "FS2");
         transaction.commit();
         stopStepOne();
 
@@ -80,6 +91,7 @@ public class RegistrationActivity extends AppCompatActivity implements Communica
 
     }
 
+
     @Override
     public void startWelcomeFragment()
     {
@@ -87,6 +99,7 @@ public class RegistrationActivity extends AppCompatActivity implements Communica
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.add(R.id.registrationActivityLayout, welcome, "WLC");
         transaction.commit();
+
     }
     @Override
     public void stopWelcomeFragment() {

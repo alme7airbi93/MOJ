@@ -3,6 +3,7 @@ package com.mohammad.mojapplication.RegistrationFragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ public class Welcome extends Fragment
     {
         View v = inflater.inflate(R.layout.fragment_welcome, container, false);
 
+
         comm = (Communicator) getActivity();
         btnReg = (Button) v.findViewById(R.id.btnReg);
 
@@ -45,11 +47,9 @@ public class Welcome extends Fragment
 
         btnLog = (Button) v.findViewById(R.id.btnLogin);
 
-        btnLog.setOnClickListener(new View.OnClickListener()
-        {
+        btnLog.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
 
 
                 comm.startLogin();
@@ -61,4 +61,7 @@ public class Welcome extends Fragment
 
         return v;
     }
+
+
+
 }

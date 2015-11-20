@@ -58,31 +58,31 @@ public class RegStepThree extends Fragment
                     Toast.makeText(getActivity(),"Please fill the empty spaces",Toast.LENGTH_LONG).show();
 
                 }else {
-
-                    User user = new User(nidCard.getId(), nidCard.getName(), nidCard.getMobile(),
-                            nidCard.getAddress(), etUserName.getText().toString(), etPass.getText().toString());
-                    mojManager.addUser(user);
-                    Toast.makeText(getActivity(),"Your Account Added",Toast.LENGTH_LONG).show();
-
-                    try{
-
-                        user = mojManager.findUserByUserName(etUserName.getText().toString());
-                        String pass = user.getPass().toString();
-                        if(user != null)
-                        {
-                            if(pass.equals(etPass.getText().toString()))
-                            {
-                                comm.sendUsertoMainActivity(user);
-                            }else
-                            {
-                                Toast.makeText(getActivity(),etPass.getText().toString() +" password incorrect" + pass,Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    }
-                    catch (NullPointerException npe)
-                    {
-                        Toast.makeText(getActivity(),"Username or password incorrect",Toast.LENGTH_LONG).show();
-                    }
+//
+//                    User user = new User(nidCard.getId(), nidCard.getName(), nidCard.getMobile(),
+//                            nidCard.getAddress(), etUserName.getText().toString(), etPass.getText().toString());
+//                    mojManager.addUser(user);
+//                    Toast.makeText(getActivity(),"Your Account Added",Toast.LENGTH_LONG).show();
+//
+//                    try{
+//
+//                        user = mojManager.findUserByUserName(etUserName.getText().toString());
+//                        String pass = user.getPass().toString();
+//                        if(user != null)
+//                        {
+//                            if(pass.equals(etPass.getText().toString()))
+//                            {
+//                                comm.sendUsertoMainActivity(user);
+//                            }else
+//                            {
+//                                Toast.makeText(getActivity(),etPass.getText().toString() +" password incorrect" + pass,Toast.LENGTH_LONG).show();
+//                            }
+//                        }
+//                    }
+//                    catch (NullPointerException npe)
+//                    {
+//                        Toast.makeText(getActivity(),"Username or password incorrect",Toast.LENGTH_LONG).show();
+//                    }
 
                 }
             }
