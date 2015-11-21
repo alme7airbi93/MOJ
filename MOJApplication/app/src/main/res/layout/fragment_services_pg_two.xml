@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/etPin"
+            android:id="@+id/etPinServ"
             android:layout_below="@+id/textView5"
             android:layout_centerHorizontal="true" />
 
@@ -61,7 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Take Pic"
-            android:id="@+id/button2"
+            android:id="@+id/btnpicBackStep2"
             android:layout_alignBottom="@+id/linearLayout3"
             android:layout_toRightOf="@+id/linearLayout3"
             android:layout_toEndOf="@+id/linearLayout3" />
@@ -91,7 +91,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Take Pic"
-            android:id="@+id/button3"
+            android:id="@+id/btnPicFrontStep2"
             android:layout_alignBottom="@+id/linearLayout3"
             android:layout_toRightOf="@+id/linearLayout3"
             android:layout_toEndOf="@+id/linearLayout3" />

@@ -5,6 +5,7 @@ import android.database.CursorWrapper;
 
 
 import com.mohammad.mojapplication.Objects.NIDCard;
+import com.mohammad.mojapplication.Objects.Party;
 import com.mohammad.mojapplication.Objects.Service;
 import com.mohammad.mojapplication.Objects.User;
 
@@ -66,12 +67,30 @@ public class MOJCursorWraper extends CursorWrapper {
         String serviceID = getString(getColumnIndex(MOJDbSchema.ServiceTable.Cols.SERVICEID));
         long date = getLong(getColumnIndex(MOJDbSchema.ServiceTable.Cols.DATE));
         String serviceStatus = getString(getColumnIndex(MOJDbSchema.ServiceTable.Cols.SERVICESTATUS));
+        String partyid1 = getString(getColumnIndex(MOJDbSchema.ServiceTable.Cols.PARTYID1));
+        String partyid2 = getString(getColumnIndex(MOJDbSchema.ServiceTable.Cols.PARTYID2));
 
 
-        Service service = new Service(userID, serviceType, serviceID, new Date(date), serviceStatus);
+        Service service = new Service(userID, serviceType, serviceID, new Date(date), serviceStatus,partyid1,partyid2);
 
 
         return service;
+
+    }
+
+    public Party getParty()
+    {
+        String partyID = getString(getColumnIndex(MOJDbSchema.PartyTable.Cols.PARTYID));
+        String fName = getString(getColumnIndex(MOJDbSchema.PartyTable.Cols.FNAME));
+        String type = getString(getColumnIndex(MOJDbSchema.PartyTable.Cols.TYPE));
+        String mobile = getString(getColumnIndex(MOJDbSchema.PartyTable.Cols.MOBILE));
+        String address = getString(getColumnIndex(MOJDbSchema.PartyTable.Cols.ADDRESS));
+
+
+        Party party = new Party(partyID,fName,type,mobile,address);
+
+
+        return party;
 
     }
 }

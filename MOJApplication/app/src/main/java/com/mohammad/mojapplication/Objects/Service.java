@@ -13,13 +13,18 @@ public class Service {
     private String serviceID;
     private Date date;
     private String serviceStatus;
+    private String partyID1;
+    private String partyID2;
 
-    public Service(String userID, String type, String serviceID, Date date,String serviceStatus) {
+    public Service(String userID, String type, String serviceID, Date date,String serviceStatus,String partyID1,String partyID2) {
         this.userID = userID;
         this.type = type;
         this.serviceID = serviceID;
         this.date = date;
         this.serviceStatus = serviceStatus;
+        this.partyID1 = partyID1;
+        this.partyID2 = partyID2;
+
     }
 
     public String getUserID() {
@@ -44,6 +49,22 @@ public class Service {
 
     public void setServiceID(String serviceID) {
         this.serviceID = serviceID;
+    }
+
+    public String getPartyID1() {
+        return partyID1;
+    }
+
+    public void setPartyID1(String partyID1) {
+        this.partyID1 = partyID1;
+    }
+
+    public String getPartyID2() {
+        return partyID2;
+    }
+
+    public void setPartyID2(String partyID2) {
+        this.partyID2 = partyID2;
     }
 
     public Date getDate() {

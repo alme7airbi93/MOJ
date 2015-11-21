@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.Toast;
 
+import com.mohammad.mojapplication.Objects.NIDCard;
 import com.mohammad.mojapplication.Objects.User;
 import com.mohammad.mojapplication.mainActivityFragments.CaseTrackingFragment;
 import com.mohammad.mojapplication.mainActivityFragments.NewsFragment;
@@ -26,7 +27,7 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity implements CommunicatorMain{
     private MOJManager mojManager;
     public LinearLayout tab1;
 
@@ -164,4 +165,14 @@ public class MainActivity extends AppCompatActivity{
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void sendToStepOne(String string) {
+        Intent i = new Intent(this, ServicesActivity.class);
+
+        i.putExtra("userID", "123");
+        startActivity(i);
+
+    }
+
 }

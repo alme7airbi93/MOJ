@@ -9,22 +9,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Enter username:"
+        android:text="Enter Transaction Pass:"
         android:id="@+id/tvUser"
         android:textSize="32dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="186dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/etUser"
+        android:id="@+id/etTransPass"
         android:layout_below="@+id/tvUser"
         android:layout_centerHorizontal="true" />
 
-    <TextView
+    TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -36,7 +36,7 @@
         android:layout_alignStart="@+id/tvUser"
         android:layout_centerVertical="true" />
 
-    <EditText
+    EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
@@ -49,9 +49,9 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Next"
+        android:text="Finish"
 
-        android:id="@+id/btnNextUser"
+        android:id="@+id/btnFinish"
 
 
         android:layout_alignParentBottom="true"

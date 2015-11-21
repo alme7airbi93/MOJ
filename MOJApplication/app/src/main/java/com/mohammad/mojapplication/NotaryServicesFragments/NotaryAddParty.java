@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Spinner;
 
 import com.mohammad.mojapplication.CommunicatorService;
 import com.mohammad.mojapplication.R;
@@ -14,26 +15,37 @@ import com.mohammad.mojapplication.R;
 /**
  * Created by alisa on 11/19/2015.
  */
-public class NotaryAddPThree extends Fragment {
+public class NotaryAddParty extends Fragment {
 
-
-    Button btnPay;
+    Button btnFirstParty,btnSecondParty,btnNext;
+    Spinner spLoc, spDocType;
     CommunicatorService communicatorService;
+
+
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View v = inflater.inflate(R.layout.fragment_services_pg_three, container, false);
+        View v = inflater.inflate(R.layout.fragment_services_pg_one, container, false);
+
+        spLoc = (Spinner) v.findViewById(R.id.spLocation);
+        spDocType = (Spinner) v.findViewById(R.id.spDocType);
+        btnFirstParty = (Button) v.findViewById(R.id.btnAddParty);
+        btnSecondParty = (Button) v.findViewById(R.id.btnAddParty2);
+        btnNext = (Button) v.findViewById(R.id.btnServNextFirst);
 
 
-        btnPay = (Button) v.findViewById(R.id.btnPay);
-        btnPay.setOnClickListener(new View.OnClickListener() {
+        btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                communicatorService.backtoMain();
+
+                communicatorService.sendToStepTwo();
+
             }
         });
+
         return v;
     }
 

@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.mohammad.mojapplication.Objects.NIDCard;
 import com.mohammad.mojapplication.Objects.User;
 import com.mohammad.mojapplication.RegistrationFragments.Login;
+import com.mohammad.mojapplication.RegistrationFragments.RegStepFour;
 import com.mohammad.mojapplication.RegistrationFragments.RegStepOne;
 import com.mohammad.mojapplication.RegistrationFragments.RegStepThree;
 import com.mohammad.mojapplication.RegistrationFragments.RegStepTwo;
@@ -129,6 +130,15 @@ public class RegistrationActivity extends AppCompatActivity implements Communica
 
     }
 
+    @Override
+    public void StartStepFour(User user) {
+    RegStepFour regStepFour = new RegStepFour();
+        regStepFour.receiveUser(user);
+    FragmentTransaction transaction = manager.beginTransaction();
+    transaction.add(R.id.registrationActivityLayout, regStepFour, "FS4");
+    transaction.commit();
+}
+
     public void stopStepOne() {
         RegStepOne regStepOne = (RegStepOne) manager.findFragmentByTag("FS1");
         FragmentTransaction transaction = manager.beginTransaction();
@@ -139,6 +149,12 @@ public class RegistrationActivity extends AppCompatActivity implements Communica
         RegStepTwo regStepTwo = (RegStepTwo)manager.findFragmentByTag("FS2");
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.remove(regStepTwo);
+        transaction.commit();
+    }
+    public void stopStepThree() {
+        RegStepThree regStepThree = (RegStepThree)manager.findFragmentByTag("FS3");
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.remove(regStepThree);
         transaction.commit();
     }
 

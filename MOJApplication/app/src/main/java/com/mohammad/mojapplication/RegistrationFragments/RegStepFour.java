@@ -1,6 +1,5 @@
 package com.mohammad.mojapplication.RegistrationFragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,27 +12,25 @@ import android.widget.Toast;
 
 import com.mohammad.mojapplication.Communicator;
 import com.mohammad.mojapplication.MOJManager;
-import com.mohammad.mojapplication.MainActivity;
 import com.mohammad.mojapplication.Objects.NIDCard;
 import com.mohammad.mojapplication.Objects.User;
 import com.mohammad.mojapplication.R;
-import com.mohammad.mojapplication.RegistrationActivity;
 
 /**
  * Created by user on 11/1/2015.
  */
-public class RegStepThree extends Fragment
+public class RegStepFour extends Fragment
 {
-    private EditText etUserName, etPass;
+    private EditText etPin;
     private Button btnFinish;
     private MOJManager mojManager;
-    private NIDCard nidCard;
+ private User  user;
     private Communicator comm;
 
-    public void reciveNIDCardObject(NIDCard nidCard)
+    public void receiveUser(User user)
     {
 
-        this.nidCard = nidCard;
+        this.user = user;
     }
 
     @Override
@@ -46,28 +43,38 @@ public class RegStepThree extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_reg_step_three_layout, container, false);
-        final NIDCard nidCard = this.nidCard;
-        etPass = (EditText) v.findViewById(R.id.etPass);
-        etUserName = (EditText) v.findViewById(R.id.etUser);
+
+        etPin = (EditText) v.findViewById(R.id.etPin);
+
         btnFinish = (Button) v.findViewById(R.id.btnFinish);
         btnFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(etPass.getText().toString().equals("") && etUserName.getText().toString().equals(""))
+                if(etPin.getText().toString().equals(""))
                 {
-                    Toast.makeText(getActivity(),"Please fill the empty spaces",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(),"Please enter a pin spaces",Toast.LENGTH_LONG).show();
 
                 }else {
 
-                    User user = new User(nidCard.getId(), nidCard.getName(), nidCard.getMobile(),
-                            nidCard.getAddress(), etUserName.getText().toString(), etPass.getText().toString(),"");
-
-                    comm.StartStepFour(user);
+                    user.setServicePass(etPin.getText().toString());
+                    mojManager.addUser(user);
                     Toast.makeText(getActivity(),"Your Account Added",Toast.LENGTH_LONG).show();
 
+                    try{
 
+                        user = mojManager.findUserByUserName(user.getUserName());
 
+                        if(user != null)
+                        {
 
+                                comm.sendUsertoMainActivity(user);
+
+                        }
+                    }
+                    catch (NullPointerException npe)
+                    {
+                        Toast.makeText(getActivity(),"Username or password incorrect",Toast.LENGTH_LONG).show();
+                    }
 
                 }
             }

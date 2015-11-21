@@ -44,6 +44,23 @@ public class MOJDbSchema {
             public static final String SERVICEID = "serviceid";
             public static final String DATE = "date";
             public static final String SERVICESTATUS = "servicestatus";
+            public static final String PARTYID1 = "partyid1";
+            public static final String PARTYID2 = "partyid2";
+
+        }
+    }
+
+
+    public static final class PartyTable
+    {
+        public static final String NAME = "partyTable";
+        public static final class Cols
+        {
+            public static final String PARTYID = "partyid";
+            public static final String FNAME = "fname";
+            public static final String TYPE = "type";
+            public static final String MOBILE = "mobile";
+            public static final String ADDRESS = "address";
 
         }
     }
