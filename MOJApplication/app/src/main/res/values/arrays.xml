@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <array name="emirates">
         <item>Abu Dhabi</item>
         <item>Dubai</item>
@@ -19,10 +20,9 @@
 
 
     <array name="PType">
-        <item>legal</item>
-        <item>financial</item>
-        <item>stock</item>
-        <item>vehicle</item>
+        <item>Client</item>
+        <item>Lawyer</item>
+        <item>Translator</item>
     </array>
     <array name="idDoc">
         <item>Driver Lisence</item>

@@ -1,5 +1,6 @@
 package com.mohammad.mojapplication.RegistrationFragments;
 
+import android.opengl.ETC1;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -42,9 +43,11 @@ public class RegStepFour extends Fragment
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_reg_step_three_layout, container, false);
+        View v = inflater.inflate(R.layout.fragment_reg_step_four_layout, container, false);
 
-        etPin = (EditText) v.findViewById(R.id.etPin);
+        comm = (Communicator) getActivity();
+
+        etPin = (EditText) v.findViewById(R.id.etTransPass);
 
         btnFinish = (Button) v.findViewById(R.id.btnFinish);
         btnFinish.setOnClickListener(new View.OnClickListener() {

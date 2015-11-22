@@ -49,8 +49,11 @@ public class RegStepOne extends Fragment {
 
         // initialzing communicator
         communicator = (Communicator) getActivity();
-       
 
+//        NIDCard user= new NIDCard("784199553043524", "Ali Saif ALZaabi", "0566201995", "AD", new Date());
+//        mojManager.addNIDCard(user);
+//        NIDCard user2= new NIDCard("1", "Ali Saif ALZaabi", "0566201995", "AD", new Date());
+//        mojManager.addNIDCard(user2);
 
 
         // SETTING THE BUTTON
@@ -60,6 +63,7 @@ public class RegStepOne extends Fragment {
             public void onClick(View v) {
                 if(etID.getText().toString().length() == 15) {
 
+                Toast.makeText(getActivity(),"Added",Toast.LENGTH_LONG).show();
                       communicator.sendData(etID.getText().toString());
 
                 }else

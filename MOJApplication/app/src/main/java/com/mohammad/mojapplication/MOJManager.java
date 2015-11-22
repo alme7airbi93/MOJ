@@ -4,11 +4,13 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.provider.Telephony;
 
 import com.mohammad.mojapplication.MOJdatabase.MOJCursorWraper;
 import com.mohammad.mojapplication.MOJdatabase.MOJDbHelper;
 import com.mohammad.mojapplication.MOJdatabase.MOJDbSchema;
 import com.mohammad.mojapplication.Objects.NIDCard;
+import com.mohammad.mojapplication.Objects.Party;
 import com.mohammad.mojapplication.Objects.Service;
 import com.mohammad.mojapplication.Objects.User;
 
@@ -140,7 +142,7 @@ public class MOJManager
         values.put(EmiratesIDTable.Cols.NAME,nidCard.getName());
         values.put(EmiratesIDTable.Cols.ADDRESS,nidCard.getAddress());
         values.put(EmiratesIDTable.Cols.DOB,nidCard.getDob().getTime());
-        values.put(EmiratesIDTable.Cols.MOBILE,nidCard.getMobile());
+        values.put(EmiratesIDTable.Cols.MOBILE, nidCard.getMobile());
         return values;
     }
 
@@ -204,6 +206,81 @@ private MOJCursorWraper querryServiceTable(String whereClause,String[] whereArgs
     public User findServiceById(String  id) {
         MOJCursorWraper cursorWraper =
                 querryUserTable(ServiceTable.Cols.SERVICEID + " = ?", new String[]{id.toString()});
+
+        try
+        {
+            if(cursorWraper.getCount() == 0)
+            {
+                return null;
+            }
+
+            cursorWraper.moveToFirst();
+            return cursorWraper.getUser();
+        }
+        finally {
+            cursorWraper.close();
+        }
+
+
+    }
+
+    public User findServiceByUserId(String  id) {
+        MOJCursorWraper cursorWraper =
+                querryUserTable(ServiceTable.Cols.USERID + " = ?", new String[]{id.toString()});
+
+        try
+        {
+            if(cursorWraper.getCount() == 0)
+            {
+                return null;
+            }
+
+            cursorWraper.moveToFirst();
+            return cursorWraper.getUser();
+        }
+        finally {
+            cursorWraper.close();
+        }
+
+
+    }
+
+
+    //-----------------------------------PartyDb---------------------------------------------
+    private MOJCursorWraper querryPartyTable(String whereClause,String[] whereArgs) {
+        Cursor cursor = database.query(
+                PartyTable.NAME,
+                null,
+                whereClause,
+                whereArgs,
+                null,
+                null,
+                null);
+        return new MOJCursorWraper(cursor);
+
+    }
+
+    private static ContentValues getContentValuesParty(Party party) {
+        ContentValues values = new ContentValues();
+        values.put(PartyTable.Cols.PARTYID,party.getPartyID());
+        values.put(PartyTable.Cols.FNAME,party.getfName());
+        values.put(PartyTable.Cols.TYPE,party.getType());
+        values.put(PartyTable.Cols.MOBILE,party.getMobile());
+        values.put(PartyTable.Cols.ADDRESS,party.getAddress());
+
+
+
+        return values;
+    }
+
+    public void addParty(Party party) {
+        ContentValues values = getContentValuesParty(party);
+        database.insert(PartyTable.NAME, null, values);
+    }
+
+    public User findpartyById(String  id) {
+        MOJCursorWraper cursorWraper =
+                querryUserTable(PartyTable.Cols.PARTYID + " = ?", new String[]{id.toString()});
 
         try
         {

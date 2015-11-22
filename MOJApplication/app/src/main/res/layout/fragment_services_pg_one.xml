@@ -35,9 +35,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/spLocation"
             android:layout_below="@+id/textView"
+
             android:layout_centerHorizontal="true"
             android:entries="@array/emirates"
-            android:spinnerMode="dropdown" />
+            android:spinnerMode="dialog" />
 
     </LinearLayout>
 
@@ -67,7 +68,7 @@
             android:layout_below="@+id/textView2"
             android:layout_centerHorizontal="true"
             android:entries="@array/NType"
-            android:spinnerMode="dropdown" />
+            android:spinnerMode="dialog" />
     </LinearLayout>
 
     <LinearLayout

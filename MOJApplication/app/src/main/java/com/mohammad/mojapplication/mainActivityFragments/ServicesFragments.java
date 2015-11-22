@@ -32,9 +32,11 @@ public class ServicesFragments extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.services_fragment_layout,container,false);
+
+        communicator = (CommunicatorMain) getActivity();
         btnnotary = (Button) v.findViewById(R.id.btnNotary);
 
-btnnotary.setOnClickListener(new View.OnClickListener() {
+        btnnotary.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
 

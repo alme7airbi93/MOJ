@@ -29,6 +29,7 @@ public class RegStepTwo extends Fragment {
     private MOJManager mojManager;
     private String randomNumber;
     private Communicator communicator;
+    private NIDCard nidCard;
 
     public void reciveIDNumber(String idNumber) {
 
@@ -47,7 +48,7 @@ public class RegStepTwo extends Fragment {
         etSMSCode = (EditText)v.findViewById(R.id.etSMS);
         communicator = (Communicator) getActivity();
 
-        final NIDCard nidCard = mojManager.findNIDCardById(IDNumber);
+         nidCard = mojManager.findNIDCardById(IDNumber);
         String mobile = nidCard.getMobile();
 
         Random ran = new Random();

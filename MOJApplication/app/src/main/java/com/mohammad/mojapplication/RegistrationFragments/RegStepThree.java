@@ -46,10 +46,10 @@ public class RegStepThree extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_reg_step_three_layout, container, false);
-        final NIDCard nidCard = this.nidCard;
+        comm = (Communicator) getActivity();
         etPass = (EditText) v.findViewById(R.id.etPass);
         etUserName = (EditText) v.findViewById(R.id.etUser);
-        btnFinish = (Button) v.findViewById(R.id.btnFinish);
+        btnFinish = (Button) v.findViewById(R.id.btnNextUser);
         btnFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

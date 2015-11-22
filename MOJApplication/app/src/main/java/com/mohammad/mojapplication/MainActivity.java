@@ -168,10 +168,12 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain{
 
     @Override
     public void sendToStepOne(String string) {
-        Intent i = new Intent(this, ServicesActivity.class);
+        Intent i = new Intent(MainActivity.this, ServicesActivity.class);
+        Log.d("123", "miaiiiiin---------------------------------------------");
 
-        i.putExtra("userID", "123");
+        i.putExtra("userID", getIntent().getStringExtra("userID"));
         startActivity(i);
+        this.finish();
 
     }
 
