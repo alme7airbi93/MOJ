@@ -116,7 +116,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:id="@+id/loAddById">
+                >
 
                 <Button
                     style="?android:attr/buttonStyleSmall"
@@ -186,6 +186,7 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
         android:layout_below="@id/rbgParty"
+        android:id="@+id/loAddById"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

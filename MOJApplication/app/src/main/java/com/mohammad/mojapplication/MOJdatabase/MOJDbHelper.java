@@ -57,7 +57,9 @@ public class MOJDbHelper extends SQLiteOpenHelper
                 MOJDbSchema.PartyTable.Cols.FNAME + ","+
                 MOJDbSchema.PartyTable.Cols.TYPE+","+
                 MOJDbSchema.PartyTable.Cols.MOBILE+","+
-                MOJDbSchema.PartyTable.Cols.ADDRESS +")");
+                MOJDbSchema.PartyTable.Cols.ADDRESS+","+
+                MOJDbSchema.PartyTable.Cols.IMAGE1+","+
+                MOJDbSchema.PartyTable.Cols.IMAGE2 +")");
     }
 
 

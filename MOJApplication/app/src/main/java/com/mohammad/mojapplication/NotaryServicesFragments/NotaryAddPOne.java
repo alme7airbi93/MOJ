@@ -10,7 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.mohammad.mojapplication.CommunicatorService;
 import com.mohammad.mojapplication.MOJManager;
@@ -32,6 +34,7 @@ public class NotaryAddPOne extends Fragment {
     MOJManager mojManager;
     Party party,party2;
     int one = 0, two = 0;
+    LinearLayout loFirstParty, loSecondParty;
 
 
 
@@ -65,15 +68,26 @@ public class NotaryAddPOne extends Fragment {
         btnFirstParty = (Button) v.findViewById(R.id.btnAddParty);
         btnSecondParty = (Button) v.findViewById(R.id.btnAddParty2);
         btnNext = (Button) v.findViewById(R.id.btnServNextFirst);
+        loFirstParty = (LinearLayout) v.findViewById(R.id.loFirstParty);
+        loSecondParty = (LinearLayout) v.findViewById(R.id.loSecondParty);
 
 
+        if(party == null)
+        {
+            loSecondParty.setVisibility(View.GONE);
+        }
+        else
+        {
+            loSecondParty.setVisibility(View.VISIBLE);
+            Log.d("123123",party.getfName()+ party.getAddress() + party.getType() + party.getMobile());
+        }
 
 
         spLoc.setSelection(one);
         spDocType.setSelection(two);
 
 
-        Log.d("123", "insiiiiiiiiiiiiiiiiiiiiiide222222222222---------------------------------------------");
+
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override

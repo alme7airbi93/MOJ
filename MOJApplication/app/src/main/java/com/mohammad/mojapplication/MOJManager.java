@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
 import android.provider.Telephony;
 
 import com.mohammad.mojapplication.MOJdatabase.MOJCursorWraper;
@@ -14,6 +15,7 @@ import com.mohammad.mojapplication.Objects.Party;
 import com.mohammad.mojapplication.Objects.Service;
 import com.mohammad.mojapplication.Objects.User;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 import static com.mohammad.mojapplication.MOJdatabase.MOJDbSchema.*;
@@ -68,7 +70,7 @@ public class MOJManager
         values.put(UserTable.Cols.ADDRESS,user.getAddress());
         values.put(UserTable.Cols.USER_NAME, user.getUserName());
         values.put(UserTable.Cols.PASS,user.getPass());
-        values.put(UserTable.Cols.SERVICEPASS,user.getServicePass());
+        values.put(UserTable.Cols.SERVICEPASS, user.getServicePass());
 
         return values;
     }
@@ -247,6 +249,14 @@ private MOJCursorWraper querryServiceTable(String whereClause,String[] whereArgs
 
 
     //-----------------------------------PartyDb---------------------------------------------
+    private static byte[] getBitmapAsByteArray(Bitmap bitmap) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 0, outputStream);
+        return outputStream.toByteArray();
+    }
+
+
+
     private MOJCursorWraper querryPartyTable(String whereClause,String[] whereArgs) {
         Cursor cursor = database.query(
                 PartyTable.NAME,
@@ -267,6 +277,9 @@ private MOJCursorWraper querryServiceTable(String whereClause,String[] whereArgs
         values.put(PartyTable.Cols.TYPE,party.getType());
         values.put(PartyTable.Cols.MOBILE,party.getMobile());
         values.put(PartyTable.Cols.ADDRESS,party.getAddress());
+        values.put(PartyTable.Cols.IMAGE1,getBitmapAsByteArray(party.getImage1()));
+        values.put(PartyTable.Cols.IMAGE2,getBitmapAsByteArray(party.getImage1()));
+
 
 
 
@@ -274,6 +287,7 @@ private MOJCursorWraper querryServiceTable(String whereClause,String[] whereArgs
     }
 
     public void addParty(Party party) {
+
         ContentValues values = getContentValuesParty(party);
         database.insert(PartyTable.NAME, null, values);
     }

@@ -88,6 +88,27 @@ public class NotaryAddParty extends Fragment {
 
 
 
+        scrollView.setVisibility(View.GONE);
+        loAddById.setVisibility(View.VISIBLE);
+
+
+
+        rbgParty.check(R.id.rbID);
+        if(rbgParty.getCheckedRadioButtonId() == R.id.rbID)
+        {
+            btnAddParty.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    user = mojManager.findUserById(getActivity().getIntent().getStringExtra("userID"));
+                    Party party = new Party("123", user.getName(), spPartyType.getSelectedItem().toString()
+                            , user.getMobile(), user.getAddress());
+                    communicatorService.backFromAdd(party, one, two);
+
+                }
+            });
+
+        }
 
 
         rbgParty.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -102,15 +123,27 @@ public class NotaryAddParty extends Fragment {
                             user = mojManager.findUserById(getActivity().getIntent().getStringExtra("userID"));
 
 
-                            Party party = new Party("123",user.getName(),spPartyType.getSelectedItem().toString()
-                                    ,user.getMobile(),user.getAddress());
-                            communicatorService.backFromAdd(party,one,two);
+                            Party party = new Party("123", user.getName(), spPartyType.getSelectedItem().toString()
+                                    , user.getMobile(), user.getAddress());
+                            communicatorService.backFromAdd(party, one, two);
                         }
                     });
-                }
-                else if (checkedId == R.id.rbMan) {
+                } else if (checkedId == R.id.rbMan) {
                     scrollView.setVisibility(View.VISIBLE);
                     loAddById.setVisibility(View.GONE);
+                    btnAddParty.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            Party party = new Party("123", etNameAddPartyMan.getText().toString()
+                                    , spPartyTypeMan.getSelectedItem().toString()
+                                    , etAddMobileAddPartyMan.getText().toString(),
+                                    etAddresssAddPartyMan.getText().toString());
+                            communicatorService.backFromAdd(party, one, two);
+
+                        }
+                    });
+
                 }
             }
         });

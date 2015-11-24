@@ -2,6 +2,8 @@ package com.mohammad.mojapplication.MOJdatabase;
 
 import android.database.Cursor;
 import android.database.CursorWrapper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 
 import com.mohammad.mojapplication.Objects.NIDCard;
@@ -9,6 +11,7 @@ import com.mohammad.mojapplication.Objects.Party;
 import com.mohammad.mojapplication.Objects.Service;
 import com.mohammad.mojapplication.Objects.User;
 
+import java.sql.Blob;
 import java.util.Date;
 import java.util.UUID;
 
@@ -85,9 +88,16 @@ public class MOJCursorWraper extends CursorWrapper {
         String type = getString(getColumnIndex(MOJDbSchema.PartyTable.Cols.TYPE));
         String mobile = getString(getColumnIndex(MOJDbSchema.PartyTable.Cols.MOBILE));
         String address = getString(getColumnIndex(MOJDbSchema.PartyTable.Cols.ADDRESS));
+        byte[] image1 = getBlob(getColumnIndex(MOJDbSchema.PartyTable.Cols.IMAGE1));
+        byte[] image2 = getBlob(getColumnIndex(MOJDbSchema.PartyTable.Cols.IMAGE2));
 
 
-        Party party = new Party(partyID,fName,type,mobile,address);
+
+        Bitmap bm1 = BitmapFactory.decodeByteArray(image1, 0, image1.length);
+        Bitmap bm2 = BitmapFactory.decodeByteArray(image1, 0, image2.length);
+
+
+        Party party = new Party(partyID,fName,type,mobile,address,bm1,bm2);
 
 
         return party;

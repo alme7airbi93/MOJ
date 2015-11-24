@@ -61,6 +61,8 @@ public class MOJDbSchema {
             public static final String TYPE = "type";
             public static final String MOBILE = "mobile";
             public static final String ADDRESS = "address";
+            public static final String IMAGE1 = "image1";
+            public static final String IMAGE2 = "image2";
 
         }
     }
