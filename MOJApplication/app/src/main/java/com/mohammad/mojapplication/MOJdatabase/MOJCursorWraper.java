@@ -88,16 +88,15 @@ public class MOJCursorWraper extends CursorWrapper {
         String type = getString(getColumnIndex(MOJDbSchema.PartyTable.Cols.TYPE));
         String mobile = getString(getColumnIndex(MOJDbSchema.PartyTable.Cols.MOBILE));
         String address = getString(getColumnIndex(MOJDbSchema.PartyTable.Cols.ADDRESS));
-        byte[] image1 = getBlob(getColumnIndex(MOJDbSchema.PartyTable.Cols.IMAGE1));
-        byte[] image2 = getBlob(getColumnIndex(MOJDbSchema.PartyTable.Cols.IMAGE2));
+        String image1 = getString(getColumnIndex(MOJDbSchema.PartyTable.Cols.IMAGE1));
+        String image2 = getString(getColumnIndex(MOJDbSchema.PartyTable.Cols.IMAGE2));
 
 
 
-        Bitmap bm1 = BitmapFactory.decodeByteArray(image1, 0, image1.length);
-        Bitmap bm2 = BitmapFactory.decodeByteArray(image1, 0, image2.length);
 
 
-        Party party = new Party(partyID,fName,type,mobile,address,bm1,bm2);
+
+        Party party = new Party(partyID,fName,type,mobile,address,image1,image2);
 
 
         return party;

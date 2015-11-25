@@ -41,6 +41,10 @@ public class NotaryAddParty extends Fragment {
     private int one, two;
     private MOJManager mojManager;
     private User user;
+    private Party party;
+    private String dir1= "";
+
+
 
 
     public void receiveExtra(int one,int two) {
@@ -48,6 +52,13 @@ public class NotaryAddParty extends Fragment {
         this.one = one;
         this.two = two;
 
+    }
+
+    public void receiveExtraFromCam(Party party,int one,int two,String dir1) {
+        this.party = party;
+        this.one = one;
+        this.two = two;
+        this.dir1 = dir1;
     }
 
     @Override
@@ -86,6 +97,17 @@ public class NotaryAddParty extends Fragment {
         btnAddParty = (Button) v.findViewById(R.id.btnAddtolist);
 
 
+        if (!dir1.equals("")) {
+            tvFront.setText(dir1);
+        }
+
+        btnFront.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                communicatorService.PartyToCam(party,one,two);
+            }
+        });
 
 
         scrollView.setVisibility(View.GONE);
@@ -102,7 +124,7 @@ public class NotaryAddParty extends Fragment {
 
                     user = mojManager.findUserById(getActivity().getIntent().getStringExtra("userID"));
                     Party party = new Party("123", user.getName(), spPartyType.getSelectedItem().toString()
-                            , user.getMobile(), user.getAddress());
+                            , user.getMobile(), user.getAddress(),null,null);
                     communicatorService.backFromAdd(party, one, two);
 
                 }
@@ -124,7 +146,7 @@ public class NotaryAddParty extends Fragment {
 
 
                             Party party = new Party("123", user.getName(), spPartyType.getSelectedItem().toString()
-                                    , user.getMobile(), user.getAddress());
+                                    , user.getMobile(), user.getAddress(),null,null);
                             communicatorService.backFromAdd(party, one, two);
                         }
                     });
@@ -138,7 +160,7 @@ public class NotaryAddParty extends Fragment {
                             Party party = new Party("123", etNameAddPartyMan.getText().toString()
                                     , spPartyTypeMan.getSelectedItem().toString()
                                     , etAddMobileAddPartyMan.getText().toString(),
-                                    etAddresssAddPartyMan.getText().toString());
+                                    etAddresssAddPartyMan.getText().toString(),null,null);
                             communicatorService.backFromAdd(party, one, two);
 
                         }

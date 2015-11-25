@@ -277,8 +277,8 @@ private MOJCursorWraper querryServiceTable(String whereClause,String[] whereArgs
         values.put(PartyTable.Cols.TYPE,party.getType());
         values.put(PartyTable.Cols.MOBILE,party.getMobile());
         values.put(PartyTable.Cols.ADDRESS,party.getAddress());
-        values.put(PartyTable.Cols.IMAGE1,getBitmapAsByteArray(party.getImage1()));
-        values.put(PartyTable.Cols.IMAGE2,getBitmapAsByteArray(party.getImage1()));
+        values.put(PartyTable.Cols.IMAGE1,party.getImage1());
+        values.put(PartyTable.Cols.IMAGE2,party.getImage1());
 
 
 

@@ -19,10 +19,14 @@ public interface CommunicatorService {
     public void sendToAdd(int one,int two);
 
     public void backFromAdd(Party party,int one, int two);
+    public void PartyToCam(Party party,int one, int two);
+    public void CamtoParty(Party party,int one, int two,String picDirFront);
+
 
     public void stopStepOne();
     public void stopStepTwo();
     public void stopStepAdd();
+    public void stopCam();
 
     public void backtoMain(String userid);
 
