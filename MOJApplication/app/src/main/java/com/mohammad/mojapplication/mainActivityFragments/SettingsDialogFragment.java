@@ -32,7 +32,7 @@ public class SettingsDialogFragment extends DialogFragment
     public static final String EXTRA_PASS = "com.mohammad.settingDialogFragment.EXTRA_PASS";
     private EditText etOldPassword,etNewPassword,etReEnterNewPassword;
 
-    private String userId,oldPassword,pass,newPass,reEnteredPass;
+    private String userId,oldPassword;
     private Button btnSubmitPass,btnCancel;
     private  AlertDialog dialog;
     private MOJManager mojManager;
@@ -66,6 +66,8 @@ public class SettingsDialogFragment extends DialogFragment
             doMode0(v,userId);
         }else if (mode == 1) {
             doMode1(v,userId);
+        }else if (mode == 2) {
+            doMode2(v, userId);
         }
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +81,10 @@ public class SettingsDialogFragment extends DialogFragment
 
     }
 
+    private void doMode2(View v, String userId) {
+        
+    }
+
     private void doMode1(View v,String userId) {
 
         user = mojManager.findUserById(userId);
@@ -87,8 +93,6 @@ public class SettingsDialogFragment extends DialogFragment
         tvSettingsDialogTitle.setText(oldPassword);
         tvChangePass.setText("Enter your password :");
         tvNewPass.setText("Enter your new number:");
-        pass = etOldPassword.getText().toString().trim();
-        newPass = etNewPassword.getText().toString();
         tvReEnterPass.setVisibility(View.GONE);
         etReEnterNewPassword.setVisibility(View.GONE);
 
@@ -96,14 +100,20 @@ public class SettingsDialogFragment extends DialogFragment
         btnSubmitPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (etOldPassword.getText().toString().equals(oldPassword)) {
-                    user.setMobile(newPass);
-                    mojManager.update(user);
-                    dialog.hide();
+                if(!etOldPassword.getText().toString().equals("") ||
+                        !etNewPassword.getText().toString().equals("")) {
+                    if (etOldPassword.getText().toString().equals(oldPassword)) {
+                        user.setMobile(etNewPassword.getText().toString());
+                        mojManager.update(user);
+                        dialog.hide();
+                    } else {
+                        tvIncorrectInfo.setText("Incorrect password !!!");
+                        return;
+                    }
                 }
                 else
                 {
-                    tvIncorrectInfo.setText("Incorrect password !!!");
+                    tvIncorrectInfo.setText("Please complete the fields");
                     return;
                 }
 
@@ -117,27 +127,34 @@ public class SettingsDialogFragment extends DialogFragment
         user = mojManager.findUserById(userId);
         oldPassword = user.getPass();
         tvSettingsDialogTitle.setText("Settings :");
-        pass = etOldPassword.getText().toString();
-        newPass = etNewPassword.getText().toString();
-        reEnteredPass = etReEnterNewPassword.getText().toString();
 
         btnSubmitPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (pass.equals(oldPassword) && !pass.equals("")) {
-                    if (newPass.equals(reEnteredPass)) {
-                        user.setPass(etNewPassword.getText().toString());
-                        mojManager.update(user);
-                        dialog.hide();
+                if(!etOldPassword.getText().toString().equals("") ||
+                        !etNewPassword.getText().toString().equals("") ||
+                        !etReEnterNewPassword.getText().toString().equals(""))
+                {
+                    if (etOldPassword.getText().toString().equals(oldPassword)) {
+                        if (etNewPassword.getText().toString()
+                                .equals(etReEnterNewPassword.getText().toString())) {
+                            user.setPass(etNewPassword.getText().toString());
+                            mojManager.update(user);
+                            dialog.hide();
 
+                        } else {
+
+                            tvIncorrectInfo.setText("Passwords does not match!");
+                            return;
+                        }
                     } else {
-
-                        tvIncorrectInfo.setText("Passwords does not match!");
+                        tvIncorrectInfo.setText("Incorrect information written!");
                         return;
                     }
-                }else
+                }
+                else
                 {
-                    tvIncorrectInfo.setText("Incorrect information written!");
+                    tvIncorrectInfo.setText("Please complete the fields");
                     return;
                 }
 

@@ -22,7 +22,7 @@ import com.mohammad.mojapplication.R;
 public class SittengsFragment extends Fragment {
 
     private String userId;
-    private Button btnChangePass,btnChangePhoneNumber;
+    private Button btnChangePass,btnChangePhoneNumber,btnChangeAddress;
     private MOJManager mojManager;
     private  User user;
     private static final int REQUEST_PASS = 0;
@@ -35,6 +35,7 @@ public class SittengsFragment extends Fragment {
         mojManager = MOJManager.getMOJManager(getActivity());
         btnChangePhoneNumber = (Button) v.findViewById(R.id.btnChangePhoneNumber);
         btnChangePass = (Button) v.findViewById(R.id.btnChangePass);
+        btnChangeAddress = (Button) v.findViewById(R.id.btnChangeAddress);
 
         userId = getActivity().getIntent().getStringExtra("userID");
         user = mojManager.findUserById(userId);
@@ -69,23 +70,25 @@ public class SittengsFragment extends Fragment {
                 settingDialogFragment.show(fm,"SettingDialog");
             }
         });
+        btnChangeAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getFragmentManager();
+                SettingsDialogFragment settingDialogFragment = new SettingsDialogFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("userID",user.getId());
+                bundle.putInt("mode", 2);
+                settingDialogFragment.setArguments(bundle);
+                settingDialogFragment.setTargetFragment(SittengsFragment.this,REQUEST_PASS);
+
+                settingDialogFragment.show(fm,"SettingDialog");
+            }
+        });
 
 
 
         return v;
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(resultCode != Activity.RESULT_OK)
-        {
-            return;
-        }
 
-        if(requestCode == REQUEST_PASS) {
-            String pass = data.getStringExtra(SettingsDialogFragment.EXTRA_PASS);
-            user.setPass(pass);
-
-        }
-    }
 }

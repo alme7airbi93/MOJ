@@ -48,6 +48,12 @@
                 android:text="Change Number"
                 android:layout_marginTop="20dp"
                 android:id="@+id/btnChangePhoneNumber"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Change Addresse"
+                android:layout_marginTop="20dp"
+                android:id="@+id/btnChangeAddress"/>
 
         </LinearLayout>
     </LinearLayout>
