@@ -1,102 +1,136 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+<!-- A DrawerLayout is intended to be used as the top-level content view using match_parent for both width and height to consume the full space available. -->
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    >
+    tools:context="com.mohammad.mojapplication.MainActivity">
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <!-- As the main content view, the view below consumes the entire
+         space available using match_parent in both dimensions. -->
+    <FrameLayout android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@drawable/mojbanner2"
-        android:id="@+id/headerLayout"
-        ></LinearLayout>
-
-    <TabHost
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/tabHost"
-        android:layout_below="@+id/headerLayout"
-        android:layout_alignLeft="@+id/headerLayout"
-        android:layout_alignStart="@+id/headerLayout">
-
-        <LinearLayout
+        android:layout_height="match_parent">
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            tools:context=".MainActivity"
+            >
 
-            <TabWidget
-                android:id="@android:id/tabs"
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
+                android:layout_height="100dp"
+                android:background="@drawable/mojbanner2"
+                android:id="@+id/headerLayout"
+                ></LinearLayout>
 
-            </TabWidget>
-
-            <FrameLayout
-                android:id="@android:id/tabcontent"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:id="@+id/tab1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    >
-
-
-                    <fragment
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:name="com.mohammad.mojapplication.mainActivityFragments.NewsFragment"
-                        android:id="@+id/fragment" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tab2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-
-                    <fragment
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:name="com.mohammad.mojapplication.mainActivityFragments.ServicesFragments"
-                        android:id="@+id/fragment2" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tab3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-
-                    <fragment
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:name="com.mohammad.mojapplication.mainActivityFragments.CaseTrackingFragment"
-                        android:id="@+id/fragment3" />
-                </LinearLayout>                <LinearLayout
-                android:id="@+id/tab4"
+            <TabHost
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:id="@+id/tabHost"
+                android:layout_below="@+id/headerLayout"
+                android:layout_alignLeft="@+id/headerLayout"
+                android:layout_alignStart="@+id/headerLayout">
 
-
-                <fragment
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:name="com.mohammad.mojapplication.mainActivityFragments.SittengsFragment"
-                    android:id="@+id/fragment4" />
-            </LinearLayout>
+                    android:orientation="vertical">
+
+                    <TabWidget
+                        android:id="@android:id/tabs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+                    </TabWidget>
+
+                    <FrameLayout
+                        android:id="@android:id/tabcontent"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:id="@+id/tab1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            >
+
+
+                            <fragment
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:name="com.mohammad.mojapplication.mainActivityFragments.NewsFragment"
+                                android:id="@+id/fragment" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/tab2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+
+                            <fragment
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:name="com.mohammad.mojapplication.mainActivityFragments.ServicesFragments"
+                                android:id="@+id/fragment2" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/tab3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+
+                            <fragment
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:name="com.mohammad.mojapplication.mainActivityFragments.CaseTrackingFragment"
+                                android:id="@+id/fragment3" />
+                        </LinearLayout>                <LinearLayout
+                        android:id="@+id/tab4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+
+                        <fragment
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:name="com.mohammad.mojapplication.mainActivityFragments.SittengsFragment"
+                            android:id="@+id/fragment4" />
+                    </LinearLayout>
 
 
 
-            </FrameLayout>
-        </LinearLayout>
-    </TabHost>
+                    </FrameLayout>
+                </LinearLayout>
+            </TabHost>
 
-</RelativeLayout>
+        </RelativeLayout>
+    </FrameLayout>
+
+    <!-- android:layout_gravity="start" tells DrawerLayout to treat
+         this as a sliding drawer on the left side for left-to-right
+         languages and on the right side for right-to-left languages.
+         If you're not building against API 17 or higher, use
+         android:layout_gravity="left" instead. -->
+    <!-- The drawer is given a fixed width in dp and extends the full height of
+         the container. -->
+    <fragment
+        android:id="@+id/navigation_drawer"
+        android:layout_width="@dimen/navigation_drawer_width"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:name="com.mohammad.mojapplication.mainActivityFragments.NavigationDrawerFragment"
+        tools:layout="@layout/fragment_navigation_drawer" />
+
+</android.support.v4.widget.DrawerLayout>

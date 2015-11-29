@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.mohammad.mojapplication.Communicator;
+import com.mohammad.mojapplication.CommunicatorMain;
 import com.mohammad.mojapplication.MOJManager;
 import com.mohammad.mojapplication.MainActivity;
 import com.mohammad.mojapplication.Objects.User;
@@ -32,6 +33,7 @@ public class Login extends Fragment
 
     Communicator comm;
 
+
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -46,6 +48,7 @@ public class Login extends Fragment
         etUserName = (EditText)v.findViewById(R.id.etUserLog);
         etPass = (EditText) v.findViewById(R.id.etPassLog);
         comm = (Communicator)getActivity();
+
         btnSignIn = (Button) v.findViewById(R.id.btnSignIn);
         mojManager = MOJManager.getMOJManager(getActivity());
         btnSignIn.setOnClickListener(new View.OnClickListener()
@@ -61,12 +64,14 @@ public class Login extends Fragment
                 try{
 
                     user = mojManager.findUserByUserName(etUserName.getText().toString());
+                    String userName = user.getUserName();
                     String pass = user.getPass().toString();
                    if(user != null)
                    {
                        if(pass.equals(etPass.getText().toString()))
                        {
                            comm.sendUsertoMainActivity(user);
+
                        }else
                        {
                            Toast.makeText(getActivity(),etPass.getText().toString() +" password incorrect" + pass,Toast.LENGTH_LONG).show();

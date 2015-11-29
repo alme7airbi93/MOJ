@@ -79,7 +79,18 @@ public class MOJManager {
         database.insert(UserTable.NAME, null, values);
     }
 
+<<<<<<< HEAD
     public User findUserById(String id) {
+=======
+    public void update(User user) {
+        String id = user.getId();
+        ContentValues values = getContentValues(user);
+        database.update(UserTable.NAME, values, UserTable.Cols.ID +" = ?",new String[] {id.toString()});
+
+    }
+
+    public User findUserById(String  id) {
+>>>>>>> origin/master
         MOJCursorWraper cursorWraper =
                 querryUserTable(UserTable.Cols.ID + " = ?", new String[]{id.toString()});
 
