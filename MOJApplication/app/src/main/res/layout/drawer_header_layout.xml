@@ -26,7 +26,8 @@
             android:id="@+id/tv_drawer_header_useName_tv"
             android:layout_below="@+id/profile_name"
             android:textSize="20dp"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"/>
 
     </LinearLayout>
 

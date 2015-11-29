@@ -63,7 +63,11 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
         tvHeaderDrawerUserName = (TextView) findViewById(R.id.tv_drawer_header_useName_tv);
-        tvHeaderDrawerUserName.setText("Welcome to Ministry of Juctise App, "+userName);
+        if (!userName.equals("guest")) {
+            tvHeaderDrawerUserName.setText("Welcome to Ministry of Juctise App, "+userName);
+        }else if (userName.equals("guest")) {
+            tvHeaderDrawerUserName.setText("Welcome to Ministry of Juctise App, "+userName);
+        }
 
     }
 
@@ -211,7 +215,8 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
             case 1:
                 i = new Intent(this, MapsActivity.class);
                 break;
-            default:
+            case 2:
+                i = new Intent(this, RegistrationActivity.class);
                 break;
         }
         if(i !=null)
@@ -234,7 +239,7 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
         switch (number) {
 
             case 1:
-                mTitle = getString(R.string.title_section1);
+                mTitle = getString(R.string.title_section_home);
                 break;
             case 2:
 //                mTitle = getString(R.string.title_section2);

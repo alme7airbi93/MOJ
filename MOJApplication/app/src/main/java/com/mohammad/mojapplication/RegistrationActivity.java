@@ -59,10 +59,20 @@ public class RegistrationActivity extends AppCompatActivity implements Communica
     @Override
     public void sendUsertoMainActivity(User user) {
 
-        Intent i = new Intent(this, MainActivity.class);
-        i.putExtra("userID", user.getId().toString());
-        startActivity(i);
-        this.finish();
+        if(user != null)
+        {
+            Intent i = new Intent(this, MainActivity.class);
+            i.putExtra("userID", user.getId().toString());
+            startActivity(i);
+            this.finish();
+        }else if (user == null) {
+
+            Intent i = new Intent(this, MainActivity.class);
+            i.putExtra("userID", "guest");
+            startActivity(i);
+            this.finish();
+        }
+
     }
 
 

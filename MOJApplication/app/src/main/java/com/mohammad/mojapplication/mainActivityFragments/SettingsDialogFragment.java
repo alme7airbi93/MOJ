@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -69,6 +70,10 @@ public class SettingsDialogFragment extends DialogFragment
         }else if (mode == 2) {
             doMode2(v, userId);
         }
+        else
+        {
+            dialog.hide();
+        }
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,17 +87,11 @@ public class SettingsDialogFragment extends DialogFragment
     }
 
     private void doMode2(View v, String userId) {
-        
-    }
-
-    private void doMode1(View v,String userId) {
-
         user = mojManager.findUserById(userId);
         oldPassword = user.getPass();
         tvSettingsDialogTitle.setText("Settings :");
-        tvSettingsDialogTitle.setText(oldPassword);
         tvChangePass.setText("Enter your password :");
-        tvNewPass.setText("Enter your new number:");
+        tvNewPass.setText("Enter your new addressee:");
         tvReEnterPass.setVisibility(View.GONE);
         etReEnterNewPassword.setVisibility(View.GONE);
 
@@ -100,10 +99,16 @@ public class SettingsDialogFragment extends DialogFragment
         btnSubmitPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!etOldPassword.getText().toString().equals("") ||
-                        !etNewPassword.getText().toString().equals("")||
-                        !etOldPassword.getText().toString().equals(null)||
-                        !etNewPassword.getText().toString().equals(null)) {
+                if(etOldPassword.getText().toString().equals("") ||
+                        etNewPassword.getText().toString().equals("")||
+                        etOldPassword.getText().toString().equals(null)||
+                        etNewPassword.getText().toString().equals(null)) {
+                    tvIncorrectInfo.setText("Please complete the fields");
+                    return;
+                }
+                else
+                {
+
                     if (etOldPassword.getText().toString().equals(oldPassword)) {
                         user.setMobile(etNewPassword.getText().toString());
                         mojManager.update(user);
@@ -113,10 +118,45 @@ public class SettingsDialogFragment extends DialogFragment
                         return;
                     }
                 }
-                else
-                {
+
+            }
+        });
+
+    }
+
+    private void doMode1(View v,String userId) {
+
+        user = mojManager.findUserById(userId);
+        oldPassword = user.getPass();
+        tvSettingsDialogTitle.setText("Settings :");
+        tvChangePass.setText("Enter your password :");
+        tvNewPass.setText("Enter your new number:");
+        etNewPassword.setInputType(InputType.TYPE_CLASS_PHONE);
+        tvReEnterPass.setVisibility(View.GONE);
+        etReEnterNewPassword.setVisibility(View.GONE);
+
+
+        btnSubmitPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(etOldPassword.getText().toString().equals("") ||
+                        etNewPassword.getText().toString().equals("")||
+                        etOldPassword.getText().toString().equals(null)||
+                        etNewPassword.getText().toString().equals(null)) {
                     tvIncorrectInfo.setText("Please complete the fields");
                     return;
+                }
+                else
+                {
+
+                    if (etOldPassword.getText().toString().equals(oldPassword)) {
+                        user.setMobile(etNewPassword.getText().toString());
+                        mojManager.update(user);
+                        dialog.hide();
+                    } else {
+                        tvIncorrectInfo.setText("Incorrect password !!!");
+                        return;
+                    }
                 }
 
             }

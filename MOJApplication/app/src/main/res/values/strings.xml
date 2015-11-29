@@ -6,9 +6,10 @@
     <string name="title_activity_registration">Registration</string>
     <string name="title_activity_main2">Main2Activity</string>
 
-    <string name="title_section1">Home</string>
-    <string name="title_section2">Location</string>
-    <string name="title_section3">Section 3</string>
+    <string name="title_section_home">Home</string>
+    <string name="title_section_location">Location</string>
+    <string name="title_section_logout">Logout</string>
+    <string name="title_section_login">Sign in</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

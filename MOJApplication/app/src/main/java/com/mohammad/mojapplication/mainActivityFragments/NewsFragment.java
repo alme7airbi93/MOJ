@@ -72,8 +72,8 @@ public class NewsFragment extends ListFragment {
         Fabric.with(getActivity(), new TwitterCore(authConfig), new TweetUi());
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setCancelable(false);
-        progressDialog.setTitle("News");
-        progressDialog.setMessage("Getting News ...");
+        progressDialog.setTitle("Preparing");
+        progressDialog.setMessage("Getting things tidy...");
         progressDialog.show();
 
         final UserTimeline userTimeline = new UserTimeline.Builder()
