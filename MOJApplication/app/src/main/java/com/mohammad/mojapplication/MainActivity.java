@@ -1,13 +1,10 @@
 package com.mohammad.mojapplication;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -19,23 +16,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TabHost;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import com.mohammad.mojapplication.Objects.NIDCard;
-import com.mohammad.mojapplication.Objects.User;
-import com.mohammad.mojapplication.mainActivityFragments.CaseTrackingFragment;
-import com.mohammad.mojapplication.mainActivityFragments.NewsFragment;
-
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-import java.util.Objects;
+import com.mohammad.mojapplication.mainActivityFragments.NavigationDrawerFragment;
 
 public class MainActivity extends AppCompatActivity implements CommunicatorMain, NavigationDrawerFragment.NavigationDrawerCallbacks {
     private MOJManager mojManager;
     public LinearLayout tab1;
+    private String userName;
+    private TextView tvHeaderDrawerUserName;
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -51,12 +42,18 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
         return (keyCode == KeyEvent.KEYCODE_BACK ? true : super.onKeyDown(keyCode, event));
     }
 
+    @Override
+    public void sendStringToMain(String string) {
+        this.userName = string;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tabHostAdding();
+        userName = this.getIntent().getStringExtra("userID");
+
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
@@ -65,7 +62,8 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
-
+        tvHeaderDrawerUserName = (TextView) findViewById(R.id.tv_drawer_header_useName_tv);
+        tvHeaderDrawerUserName.setText("Welcome to Ministry of Juctise App, "+userName);
 
     }
 
@@ -190,6 +188,8 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
 
     @Override
     public void sendToStepOne(String string) {
+
+
         Intent i = new Intent(MainActivity.this, ServicesActivity.class);
         Log.d("123", "miaiiiiin---------------------------------------------");
 
@@ -201,24 +201,46 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
+
+       Intent i = null;
+        switch (position)
+        {
+            case 0:
+
+                break;
+            case 1:
+                i = new Intent(this, MapsActivity.class);
+                break;
+            default:
+                break;
+        }
+        if(i !=null)
+        {
+            startActivity(i);
+
+        }
+
+
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
                 .commit();
 
+
     }
 
     public void onSectionAttached(int number) {
         switch (number) {
+
             case 1:
                 mTitle = getString(R.string.title_section1);
                 break;
             case 2:
-                mTitle = getString(R.string.title_section2);
+//                mTitle = getString(R.string.title_section2);
                 break;
             case 3:
-                mTitle = getString(R.string.title_section3);
+//                mTitle = getString(R.string.title_section3);
                 break;
         }
     }

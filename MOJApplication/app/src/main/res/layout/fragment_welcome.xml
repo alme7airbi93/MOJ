@@ -1,25 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:background="@drawable/background2">
+                android:background="#12ff9a26"
+                android:orientation="vertical">
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="\tWELCOME TO MOJ APP"
+    android:textSize="30dp"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp"
 
+    />
+    <TextView
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login or Rigester in our App:"
+        android:textSize="20dp"
+        android:paddingLeft="20dp"
+        android:textColor="@color/wallet_bright_foreground_holo_light"
+         />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/loLogingOutButtons"
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:background="#00e1e1ff">
+    <TextView
+
+        android:textColor="#000"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="\tClick Login if you already have an account."
+         />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Login"
         android:id="@+id/btnLogin"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="200dp"/>
-
+        />
+    <TextView
+        android:textColor="#000"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="\tor register to create one."
+        />
     <Button
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Register"
         android:id="@+id/btnReg"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
-</RelativeLayout>
+        android:layout_marginBottom="20dp"
+       />
+
+</LinearLayout>
+
+</LinearLayout>

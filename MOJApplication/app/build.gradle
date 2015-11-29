@@ -36,12 +36,13 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:23.0.1'
-    compile 'com.android.support:recyclerview-v7:23.0.1'
     compile('com.twitter.sdk.android:twitter:1.9.1@aar') {
         transitive = true;
     }
     compile('com.twitter.sdk.android:tweet-ui:1.7.0@aar') {
         transitive = true;
     }
+    compile 'com.android.support:appcompat-v7:23.0.1'
+    compile 'com.android.support:recyclerview-v7:23.0.1'
+    compile 'com.google.android.gms:play-services:8.1.0'
 }

@@ -7,7 +7,7 @@ import com.mohammad.mojapplication.Objects.NIDCard;
  */
 public interface CommunicatorMain {
 
-
+    public void sendStringToMain(String string);
     public void sendToStepOne(String string);
 
 
