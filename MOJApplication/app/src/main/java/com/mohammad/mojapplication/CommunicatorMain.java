@@ -7,13 +7,13 @@ import com.mohammad.mojapplication.Objects.NIDCard;
  */
 public interface CommunicatorMain {
 
-<<<<<<< HEAD
+
 
     public void sendToStepOne();
-=======
+
     public void sendStringToMain(String string);
-    public void sendToStepOne(String string);
->>>>>>> origin/master
+
+
 
 
 }

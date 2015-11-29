@@ -101,7 +101,9 @@ public class SettingsDialogFragment extends DialogFragment
             @Override
             public void onClick(View v) {
                 if(!etOldPassword.getText().toString().equals("") ||
-                        !etNewPassword.getText().toString().equals("")) {
+                        !etNewPassword.getText().toString().equals("")||
+                        !etOldPassword.getText().toString().equals(null)||
+                        !etNewPassword.getText().toString().equals(null)) {
                     if (etOldPassword.getText().toString().equals(oldPassword)) {
                         user.setMobile(etNewPassword.getText().toString());
                         mojManager.update(user);
@@ -131,10 +133,20 @@ public class SettingsDialogFragment extends DialogFragment
         btnSubmitPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!etOldPassword.getText().toString().equals("") ||
-                        !etNewPassword.getText().toString().equals("") ||
-                        !etReEnterNewPassword.getText().toString().equals(""))
+                if(etOldPassword.getText().toString().equals("") ||
+                        etNewPassword.getText().toString().equals("") ||
+                        etReEnterNewPassword.getText().toString().equals("")||
+                        etOldPassword.getText().toString().equals(null)||
+                        etNewPassword.getText().toString().equals(null)||
+                        etReEnterNewPassword.getText().toString().equals(null))
                 {
+                    tvIncorrectInfo.setText("Please complete the fields");
+                    return;
+                }
+                else
+                {
+
+
                     if (etOldPassword.getText().toString().equals(oldPassword)) {
                         if (etNewPassword.getText().toString()
                                 .equals(etReEnterNewPassword.getText().toString())) {
@@ -151,11 +163,6 @@ public class SettingsDialogFragment extends DialogFragment
                         tvIncorrectInfo.setText("Incorrect information written!");
                         return;
                     }
-                }
-                else
-                {
-                    tvIncorrectInfo.setText("Please complete the fields");
-                    return;
                 }
 
             }

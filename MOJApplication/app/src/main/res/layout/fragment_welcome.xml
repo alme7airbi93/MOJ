@@ -4,11 +4,10 @@
                 android:layout_height="match_parent"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-<<<<<<< HEAD
-              >
-=======
-                android:background="#12ff9a26"
-                android:orientation="vertical">
+    android:background="#12ff9a26"
+    android:orientation="vertical" >
+
+
 <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -16,7 +15,7 @@
     android:textSize="30dp"
     android:paddingTop="20dp"
     android:paddingBottom="20dp"
->>>>>>> origin/master
+
 
     />
     <TextView
@@ -63,17 +62,17 @@
         android:layout_height="wrap_content"
         android:text="Register"
         android:id="@+id/btnReg"
-<<<<<<< HEAD
         android:layout_below="@+id/btnLogin"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="94dp" />
-</RelativeLayout>
-=======
-        android:layout_marginBottom="20dp"
+
+        />
+</LinearLayout>
+
+
        />
 
 </LinearLayout>
 
-</LinearLayout>
->>>>>>> origin/master
+
+

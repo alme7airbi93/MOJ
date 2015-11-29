@@ -44,7 +44,7 @@ public class CaseTrackingFragment extends Fragment {
         recyclerView = (RecyclerView)v.findViewById(R.id.recycler_view_cases);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-
+        updateUI();
 
         return v;
     }

@@ -187,13 +187,9 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
 
 
     @Override
-<<<<<<< HEAD
     public void sendToStepOne() {
-=======
-    public void sendToStepOne(String string) {
 
 
->>>>>>> origin/master
         Intent i = new Intent(MainActivity.this, ServicesActivity.class);
         Log.d("123", "miaiiiiin---------------------------------------------");
 

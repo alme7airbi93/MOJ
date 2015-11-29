@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:orientation="vertical" android:layout_width="match_parent"
-<<<<<<< HEAD
 
                 android:layout_height="match_parent">
 
@@ -10,10 +9,9 @@
         android:layout_height="wrap_content"></LinearLayout>
     <TextView
         android:layout_width="wrap_content"
-=======
                 android:layout_height="match_parent"
     android:transitionGroup="false"
-    android:background="#FAFAD2">
+    android:background="#FAFAD2"/>
 
     <LinearLayout
         android:layout_marginTop="80dp"
@@ -27,7 +25,6 @@
 
         <TextView
         android:layout_width="match_parent"
->>>>>>> origin/master
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Enter username:"
