@@ -16,6 +16,7 @@ import com.mohammad.mojapplication.Objects.Service;
 import com.mohammad.mojapplication.Objects.User;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.mohammad.mojapplication.MOJdatabase.MOJDbSchema.*;
@@ -23,12 +24,10 @@ import static com.mohammad.mojapplication.MOJdatabase.MOJDbSchema.*;
 /**
  * Created by user on 11/4/2015.
  */
-public class MOJManager
-{
+public class MOJManager {
 
 
-
-    private  static MOJManager mojManager;
+    private static MOJManager mojManager;
     private SQLiteDatabase database;
     private Context context;
 
@@ -38,38 +37,38 @@ public class MOJManager
         database = new MOJDbHelper(this.context).getWritableDatabase();
     }
 
-    public static MOJManager getMOJManager(Context context)
-    {
+    public static MOJManager getMOJManager(Context context) {
 
-        if(mojManager == null) {
+        if (mojManager == null) {
             mojManager = new MOJManager(context);
 
         }
         return mojManager;
 
     }
-    // USER DATA TABLE ---------------------------------------------------------
-  private MOJCursorWraper querryUserTable(String whereClause,String[] whereArgs) {
-      Cursor cursor = database.query(
-              UserTable.NAME,
-              null,
-              whereClause,
-              whereArgs,
-              null,
-              null,
-              null);
-      return new MOJCursorWraper(cursor);
 
-  }
+    // USER DATA TABLE ---------------------------------------------------------
+    private MOJCursorWraper querryUserTable(String whereClause, String[] whereArgs) {
+        Cursor cursor = database.query(
+                UserTable.NAME,
+                null,
+                whereClause,
+                whereArgs,
+                null,
+                null,
+                null);
+        return new MOJCursorWraper(cursor);
+
+    }
 
     private static ContentValues getContentValues(User user) {
         ContentValues values = new ContentValues();
-        values.put(UserTable.Cols.ID,user.getId());
-        values.put(UserTable.Cols.NAME,user.getName());
-        values.put(UserTable.Cols.MOBILE,user.getAddress());
-        values.put(UserTable.Cols.ADDRESS,user.getAddress());
+        values.put(UserTable.Cols.ID, user.getId());
+        values.put(UserTable.Cols.NAME, user.getName());
+        values.put(UserTable.Cols.MOBILE, user.getAddress());
+        values.put(UserTable.Cols.ADDRESS, user.getAddress());
         values.put(UserTable.Cols.USER_NAME, user.getUserName());
-        values.put(UserTable.Cols.PASS,user.getPass());
+        values.put(UserTable.Cols.PASS, user.getPass());
         values.put(UserTable.Cols.SERVICEPASS, user.getServicePass());
 
         return values;
@@ -80,42 +79,36 @@ public class MOJManager
         database.insert(UserTable.NAME, null, values);
     }
 
-    public User findUserById(String  id) {
+    public User findUserById(String id) {
         MOJCursorWraper cursorWraper =
                 querryUserTable(UserTable.Cols.ID + " = ?", new String[]{id.toString()});
 
-        try
-        {
-            if(cursorWraper.getCount() == 0)
-            {
+        try {
+            if (cursorWraper.getCount() == 0) {
                 return null;
             }
 
             cursorWraper.moveToFirst();
             return cursorWraper.getUser();
-        }
-        finally {
+        } finally {
             cursorWraper.close();
         }
 
 
     }
 
-    public User findUserByUserName(String  userName) {
+    public User findUserByUserName(String userName) {
         MOJCursorWraper cursorWraper =
                 querryUserTable(UserTable.Cols.USER_NAME + " = ?", new String[]{userName});
 
-        try
-        {
-            if(cursorWraper.getCount() == 0)
-            {
+        try {
+            if (cursorWraper.getCount() == 0) {
                 return null;
             }
 
             cursorWraper.moveToFirst();
             return cursorWraper.getUser();
-        }
-        finally {
+        } finally {
             cursorWraper.close();
         }
 
@@ -125,7 +118,7 @@ public class MOJManager
 
     //  NATIONAL ID DATABASE -----------------------------------------------------------------------
 
-    private MOJCursorWraper querryEmiratesIDTable(String whereClause,String[] whereArgs) {
+    private MOJCursorWraper querryEmiratesIDTable(String whereClause, String[] whereArgs) {
         Cursor cursor = database.query(
                 EmiratesIDTable.NAME,
                 null,
@@ -140,10 +133,10 @@ public class MOJManager
 
     private static ContentValues getContentValuesNID(NIDCard nidCard) {
         ContentValues values = new ContentValues();
-        values.put(EmiratesIDTable.Cols.ID,nidCard.getId());
-        values.put(EmiratesIDTable.Cols.NAME,nidCard.getName());
-        values.put(EmiratesIDTable.Cols.ADDRESS,nidCard.getAddress());
-        values.put(EmiratesIDTable.Cols.DOB,nidCard.getDob().getTime());
+        values.put(EmiratesIDTable.Cols.ID, nidCard.getId());
+        values.put(EmiratesIDTable.Cols.NAME, nidCard.getName());
+        values.put(EmiratesIDTable.Cols.ADDRESS, nidCard.getAddress());
+        values.put(EmiratesIDTable.Cols.DOB, nidCard.getDob().getTime());
         values.put(EmiratesIDTable.Cols.MOBILE, nidCard.getMobile());
         return values;
     }
@@ -153,48 +146,46 @@ public class MOJManager
         database.insert(EmiratesIDTable.NAME, null, values);
     }
 
-    public NIDCard findNIDCardById(String  id) {
+    public NIDCard findNIDCardById(String id) {
         MOJCursorWraper cursorWraper =
                 querryEmiratesIDTable(EmiratesIDTable.Cols.ID + " = ?", new String[]{id.toString()});
 
-        try
-        {
-            if(cursorWraper.getCount() == 0)
-            {
+        try {
+            if (cursorWraper.getCount() == 0) {
                 return null;
             }
 
             cursorWraper.moveToFirst();
             return cursorWraper.getNID();
-        }
-        finally {
+        } finally {
             cursorWraper.close();
         }
 
 
     }
 
-//-------------------------------------Service Database---------------------------------------------------
-private MOJCursorWraper querryServiceTable(String whereClause,String[] whereArgs) {
-    Cursor cursor = database.query(
-            ServiceTable.NAME,
-            null,
-            whereClause,
-            whereArgs,
-            null,
-            null,
-            null);
-    return new MOJCursorWraper(cursor);
+    //-------------------------------------Service Database---------------------------------------------------
+    private MOJCursorWraper querryServiceTable(String whereClause, String[] whereArgs) {
+        Cursor cursor = database.query(
+                ServiceTable.NAME,
+                null,
+                whereClause,
+                whereArgs,
+                null,
+                null,
+                null);
+        return new MOJCursorWraper(cursor);
 
-}
+    }
 
     private static ContentValues getContentValuesService(Service service) {
         ContentValues values = new ContentValues();
-        values.put(ServiceTable.Cols.USERID,service.getUserID());
-        values.put(ServiceTable.Cols.TYPE,service.getType());
-        values.put(ServiceTable.Cols.SERVICEID,service.getServiceID());
-        values.put(ServiceTable.Cols.DATE,service.getDate().getTime());
-        values.put(ServiceTable.Cols.SERVICESTATUS,service.getServiceStatus());
+        values.put(ServiceTable.Cols.USERID, service.getUserID());
+        values.put(ServiceTable.Cols.TYPE, service.getType());
+        values.put(ServiceTable.Cols.SERVICEID, service.getServiceID());
+        values.put(ServiceTable.Cols.DATE, service.getDate().getTime());
+        values.put(ServiceTable.Cols.SERVICESTATUS, service.getServiceStatus());
+        values.put(ServiceTable.Cols.LOCATION, service.getServiceStatus());
 
 
         return values;
@@ -205,55 +196,51 @@ private MOJCursorWraper querryServiceTable(String whereClause,String[] whereArgs
         database.insert(ServiceTable.NAME, null, values);
     }
 
-    public User findServiceById(String  id) {
+    public User findServiceById(String id) {
         MOJCursorWraper cursorWraper =
-                querryUserTable(ServiceTable.Cols.SERVICEID + " = ?", new String[]{id.toString()});
+                querryServiceTable(ServiceTable.Cols.SERVICEID + " = ?", new String[]{id.toString()});
 
-        try
-        {
-            if(cursorWraper.getCount() == 0)
-            {
+        try {
+            if (cursorWraper.getCount() == 0) {
                 return null;
             }
 
             cursorWraper.moveToFirst();
             return cursorWraper.getUser();
-        }
-        finally {
+        } finally {
             cursorWraper.close();
         }
 
 
     }
 
-    public User findServiceByUserId(String  id) {
-        MOJCursorWraper cursorWraper =
-                querryUserTable(ServiceTable.Cols.USERID + " = ?", new String[]{id.toString()});
+    public List<Service> findServiceByUserId(String id) {
+        MOJCursorWraper cursorWraper = querryServiceTable(null,null);
+        List<Service> services = new ArrayList<>();
 
-        try
-        {
-            if(cursorWraper.getCount() == 0)
-            {
-                return null;
+
+        try {
+            cursorWraper.moveToFirst();
+            while (!cursorWraper.isAfterLast()) {
+                if (cursorWraper.getService().getUserID().equals(id)) {
+                    services.add(cursorWraper.getService());
+                }
+
+                cursorWraper.moveToNext();
             }
 
-            cursorWraper.moveToFirst();
-            return cursorWraper.getUser();
-        }
-        finally {
+        } finally {
             cursorWraper.close();
         }
 
+        return services;
 
     }
+
 
 
     //-----------------------------------PartyDb---------------------------------------------
-    private static byte[] getBitmapAsByteArray(Bitmap bitmap) {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 0, outputStream);
-        return outputStream.toByteArray();
-    }
+
 
 
 
@@ -278,7 +265,7 @@ private MOJCursorWraper querryServiceTable(String whereClause,String[] whereArgs
         values.put(PartyTable.Cols.MOBILE,party.getMobile());
         values.put(PartyTable.Cols.ADDRESS,party.getAddress());
         values.put(PartyTable.Cols.IMAGE1,party.getImage1());
-        values.put(PartyTable.Cols.IMAGE2,party.getImage1());
+
 
 
 
@@ -294,7 +281,7 @@ private MOJCursorWraper querryServiceTable(String whereClause,String[] whereArgs
 
     public User findpartyById(String  id) {
         MOJCursorWraper cursorWraper =
-                querryUserTable(PartyTable.Cols.PARTYID + " = ?", new String[]{id.toString()});
+                querryPartyTable(PartyTable.Cols.PARTYID + " = ?", new String[]{id.toString()});
 
         try
         {

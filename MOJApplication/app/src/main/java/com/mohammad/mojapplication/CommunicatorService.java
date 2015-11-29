@@ -13,20 +13,19 @@ public interface CommunicatorService {
 
 
 
-    public void sendToStepTwo(Service service,User user,Party party);
-    public void sendToStepThree(Service service,User user,Party party);
+    public void sendToStepTwo(Service service,User user,Party party,Party party2);
+    public void sendToStepThree(Service service,User user,Party party,Party party2);
 
     public void sendToAdd(int one,int two);
+    public void sendToAddTwo(Party party,int one,int two);
 
     public void backFromAdd(Party party,int one, int two);
-    public void PartyToCam(Party party,int one, int two);
-    public void CamtoParty(Party party,int one, int two,String picDirFront);
-
+    public void backFromAddTwo(Party party,Party party2,int one, int two);
 
     public void stopStepOne();
     public void stopStepTwo();
     public void stopStepAdd();
-    public void stopCam();
+
 
     public void backtoMain(String userid);
 

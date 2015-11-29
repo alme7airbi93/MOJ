@@ -72,9 +72,10 @@ public class MOJCursorWraper extends CursorWrapper {
         String serviceStatus = getString(getColumnIndex(MOJDbSchema.ServiceTable.Cols.SERVICESTATUS));
         String partyid1 = getString(getColumnIndex(MOJDbSchema.ServiceTable.Cols.PARTYID1));
         String partyid2 = getString(getColumnIndex(MOJDbSchema.ServiceTable.Cols.PARTYID2));
+        String loc = getString(getColumnIndex(MOJDbSchema.ServiceTable.Cols.LOCATION));
 
 
-        Service service = new Service(userID, serviceType, serviceID, new Date(date), serviceStatus,partyid1,partyid2);
+        Service service = new Service(userID, serviceType, serviceID, new Date(date), serviceStatus,partyid1,partyid2,loc);
 
 
         return service;
@@ -89,14 +90,14 @@ public class MOJCursorWraper extends CursorWrapper {
         String mobile = getString(getColumnIndex(MOJDbSchema.PartyTable.Cols.MOBILE));
         String address = getString(getColumnIndex(MOJDbSchema.PartyTable.Cols.ADDRESS));
         String image1 = getString(getColumnIndex(MOJDbSchema.PartyTable.Cols.IMAGE1));
-        String image2 = getString(getColumnIndex(MOJDbSchema.PartyTable.Cols.IMAGE2));
 
 
 
 
 
 
-        Party party = new Party(partyID,fName,type,mobile,address,image1,image2);
+
+        Party party = new Party(partyID,fName,type,mobile,address,image1);
 
 
         return party;

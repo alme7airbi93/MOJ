@@ -46,6 +46,7 @@ public class MOJDbSchema {
             public static final String SERVICESTATUS = "servicestatus";
             public static final String PARTYID1 = "partyid1";
             public static final String PARTYID2 = "partyid2";
+            public static final String LOCATION = "loc";
 
         }
     }
@@ -62,7 +63,7 @@ public class MOJDbSchema {
             public static final String MOBILE = "mobile";
             public static final String ADDRESS = "address";
             public static final String IMAGE1 = "image1";
-            public static final String IMAGE2 = "image2";
+
 
         }
     }

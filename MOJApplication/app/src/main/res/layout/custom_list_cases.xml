@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:textSize="16dp"
         android:text="Status:"
-        android:id="@+id/textView14"
+        android:id="@+id/tvCaseStatus"
         android:layout_marginBottom="4dp"/>
     <View
         android:layout_width="match_parent"

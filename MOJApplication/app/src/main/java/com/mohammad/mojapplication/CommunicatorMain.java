@@ -8,7 +8,7 @@ import com.mohammad.mojapplication.Objects.NIDCard;
 public interface CommunicatorMain {
 
 
-    public void sendToStepOne(String string);
+    public void sendToStepOne();
 
 
 }

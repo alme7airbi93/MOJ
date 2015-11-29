@@ -15,8 +15,9 @@ public class Service {
     private String serviceStatus;
     private String partyID1;
     private String partyID2;
+    private String loc;
 
-    public Service(String userID, String type, String serviceID, Date date,String serviceStatus,String partyID1,String partyID2) {
+    public Service(String userID, String type, String serviceID, Date date,String serviceStatus,String partyID1,String partyID2,String loc) {
         this.userID = userID;
         this.type = type;
         this.serviceID = serviceID;
@@ -24,7 +25,16 @@ public class Service {
         this.serviceStatus = serviceStatus;
         this.partyID1 = partyID1;
         this.partyID2 = partyID2;
+        this.loc = loc;
 
+    }
+
+    public String getLoc() {
+        return loc;
+    }
+
+    public void setLoc(String loc) {
+        this.loc = loc;
     }
 
     public String getUserID() {

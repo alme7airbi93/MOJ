@@ -17,18 +17,18 @@ public class Party {
     private String mobile;
     private String address;
     private String image1;
-    private String image2;
 
 
 
-    public Party(String partyID, String fName, String type, String mobile, String address,String image1,String image2) {
+
+    public Party(String partyID, String fName, String type, String mobile, String address,String image1) {
         this.partyID = partyID;
         this.fName = fName;
         this.type = type;
         this.mobile = mobile;
         this.address = address;
         this.image1 = image1;
-        this.image2 = image2;
+
     }
 
     public String getImage1() {
@@ -39,13 +39,7 @@ public class Party {
         this.image1 = image1;
     }
 
-    public String getImage2() {
-        return image2;
-    }
 
-    public void setImage2(String image2) {
-        this.image2 = image2;
-    }
 
     public String getPartyID() {
         return partyID;

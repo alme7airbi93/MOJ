@@ -22,6 +22,7 @@ import com.mohammad.mojapplication.Objects.User;
 import com.mohammad.mojapplication.R;
 
 import java.util.Date;
+import java.util.Random;
 
 /**
  * Created by alisa on 11/19/2015.
@@ -33,8 +34,9 @@ public class NotaryAddPOne extends Fragment {
     CommunicatorService communicatorService;
     MOJManager mojManager;
     Party party,party2;
-    int one = 0, two = 0;
+    int one, two;
     LinearLayout loFirstParty, loSecondParty;
+    NotaryAddPOne notaryAddPOne;
 
 
 
@@ -47,12 +49,20 @@ public class NotaryAddPOne extends Fragment {
 
     }
 
+    public void receiveExtraFromSecondParty(Party party,Party party2,int one,int two) {
+
+        this.party = party;
+        this.party2 = party2;
+        this.one = one;
+        this.two = two;
+
+    }
+
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("123", "insiiiiiiiiiiiiiiiiiiiiiidesssssssssssssssssssss1111---------------------------------------------");
         mojManager = MOJManager.getMOJManager(getActivity());
     }
 
@@ -79,7 +89,6 @@ public class NotaryAddPOne extends Fragment {
         else
         {
             loSecondParty.setVisibility(View.VISIBLE);
-            Log.d("123123",party.getfName()+ party.getAddress() + party.getType() + party.getMobile());
         }
 
 
@@ -93,11 +102,30 @@ public class NotaryAddPOne extends Fragment {
             @Override
             public void onClick(View v) {
 
-                User user = mojManager.findUserById(getActivity().getIntent().getStringExtra("userID"));
+                if(party != null)
+                {
+                    User user = mojManager.findUserById(getActivity().getIntent().getStringExtra("userID"));
 
-                Service service = new Service(user.getId(), spDocType.getSelectedItem().toString(),
-                        spLoc.getSelectedItem().toString(), new Date(), "Pending", party.getPartyID(), party.getPartyID());
-                communicatorService.sendToStepTwo(service,user,party);
+                    Random ran = new Random();
+                    int randID = ran.nextInt(999999 - 91111) + 91111;
+
+                    if(party2 != null) {
+                        Service service = new Service(user.getId(), spDocType.getSelectedItem().toString(),
+                                randID + "", new Date(), "Pending", party.getPartyID(), party2.getPartyID(), spLoc.getSelectedItem().toString());
+                        communicatorService.sendToStepTwo(service, user, party,party2);
+                    }
+                    else
+                    {
+                        Service service = new Service(user.getId(), spDocType.getSelectedItem().toString(),
+                                randID + "", new Date(), "Pending", party.getPartyID(), "",spLoc.getSelectedItem().toString());
+                        communicatorService.sendToStepTwo(service, user, party,party2);
+                    }
+
+                }
+                else
+                {
+                    Toast.makeText(getActivity(), "Please add a party", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
@@ -105,8 +133,14 @@ public class NotaryAddPOne extends Fragment {
             @Override
             public void onClick(View v) {
 
-                communicatorService.sendToAdd(spLoc.getSelectedItemPosition(),spDocType.getSelectedItemPosition());
+                communicatorService.sendToAdd(spLoc.getSelectedItemPosition(), spDocType.getSelectedItemPosition());
 
+            }
+        });
+        btnSecondParty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                communicatorService.sendToAddTwo(party, spLoc.getSelectedItemPosition(), spDocType.getSelectedItemPosition());
             }
         });
 

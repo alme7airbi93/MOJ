@@ -6,19 +6,14 @@ import android.os.PersistableBundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import com.mohammad.mojapplication.NotaryServicesFragments.NotaryAddPOne;
 import com.mohammad.mojapplication.NotaryServicesFragments.NotaryAddPThree;
 import com.mohammad.mojapplication.NotaryServicesFragments.NotaryAddPTwo;
 import com.mohammad.mojapplication.NotaryServicesFragments.NotaryAddParty;
-import com.mohammad.mojapplication.NotaryServicesFragments.NotaryCamFragment;
-import com.mohammad.mojapplication.Objects.NIDCard;
 import com.mohammad.mojapplication.Objects.Party;
 import com.mohammad.mojapplication.Objects.Service;
 import com.mohammad.mojapplication.Objects.User;
-import com.mohammad.mojapplication.RegistrationFragments.RegStepOne;
-import com.mohammad.mojapplication.RegistrationFragments.Welcome;
 
 /**
  * Created by alisa on 11/19/2015.
@@ -26,6 +21,7 @@ import com.mohammad.mojapplication.RegistrationFragments.Welcome;
 public class ServicesActivity extends AppCompatActivity implements CommunicatorService
 {
 
+    private int IMAGE_LOAD = 111;
     MOJManager mojManager;
     User user;
     private FragmentManager manager = getSupportFragmentManager();
@@ -51,28 +47,31 @@ public class ServicesActivity extends AppCompatActivity implements CommunicatorS
     }
 
 
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
 
+    }
 
     @Override
-    public void sendToStepTwo(Service service,User user,Party party) {
+    public void sendToStepTwo(Service service,User user,Party party,Party party2) {
         NotaryAddPTwo notaryAddPTwo = new NotaryAddPTwo();
-        notaryAddPTwo.receiveUser(service,user,party);
+        notaryAddPTwo.receiveUser(service, user, party,party2);
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.add(R.id.servicesActivityLayout, notaryAddPTwo, "NPT");
         transaction.commit();
-
-
         stopStepOne();
+
     }
 
 
 
 
     @Override
-    public void sendToStepThree(Service service,User user,Party party) {
+    public void sendToStepThree(Service service,User user,Party party,Party party2) {
 
         NotaryAddPThree notaryAddPThree = new NotaryAddPThree();
-        notaryAddPThree.receiveUser(service,user,party);
+        notaryAddPThree.receiveUser(service, user, party,party2);
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.add(R.id.servicesActivityLayout, notaryAddPThree, "NPTH");
         transaction.commit();
@@ -83,12 +82,24 @@ public class ServicesActivity extends AppCompatActivity implements CommunicatorS
     @Override
     public void sendToAdd(int one,int two) {
         NotaryAddParty notaryAddParty = new NotaryAddParty();
-        notaryAddParty.receiveExtra(one,two);
+        notaryAddParty.receiveExtra(one, two);
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.add(R.id.servicesActivityLayout, notaryAddParty, "NAP");
         transaction.commit();
 
         stopStepOne();
+    }
+
+    @Override
+    public void sendToAddTwo(Party party, int one, int two) {
+        NotaryAddParty notaryAddParty = new NotaryAddParty();
+        notaryAddParty.receiveExtraSecond(party, one, two);
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.add(R.id.servicesActivityLayout, notaryAddParty, "NAP");
+        transaction.commit();
+
+        stopStepOne();
+
     }
 
     @Override
@@ -106,28 +117,17 @@ public class ServicesActivity extends AppCompatActivity implements CommunicatorS
     }
 
     @Override
-    public void PartyToCam(Party party, int one, int two) {
-        NotaryCamFragment notaryCamFragment = new NotaryCamFragment();
-        notaryCamFragment.recieveFromAddParty(party, one, two);
+    public void backFromAddTwo(Party party, Party party2, int one, int two) {
+        NotaryAddPOne notaryAddPOne = new NotaryAddPOne();
+        notaryAddPOne.receiveExtraFromSecondParty(party,party2, one, two);
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.add(R.id.servicesActivityLayout, notaryCamFragment, "CAM");
+        transaction.add(R.id.servicesActivityLayout, notaryAddPOne, "NPO");
         transaction.commit();
 
 
         stopStepAdd();
     }
 
-    @Override
-    public void CamtoParty(Party party, int one, int two, String picDirFront) {
-        NotaryAddParty notaryAddParty = new NotaryAddParty();
-        notaryAddParty.receiveExtraFromCam(party, one, two,picDirFront);
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.add(R.id.servicesActivityLayout, notaryAddParty, "NPO");
-        transaction.commit();
-
-
-        stopStepAdd();
-    }
 
     @Override
     public void stopStepOne() {
@@ -153,13 +153,7 @@ public class ServicesActivity extends AppCompatActivity implements CommunicatorS
         transaction.commit();
     }
 
-    @Override
-    public void stopCam() {
-        NotaryCamFragment notaryCamFragment = (NotaryCamFragment) manager.findFragmentByTag("CAM");
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.remove(notaryCamFragment);
-        transaction.commit();
-    }
+
 
     @Override
     public void backtoMain(String userid) {
