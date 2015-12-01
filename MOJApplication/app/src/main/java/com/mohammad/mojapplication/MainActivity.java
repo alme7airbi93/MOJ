@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import com.mohammad.mojapplication.Objects.User;
 import com.mohammad.mojapplication.mainActivityFragments.NavigationDrawerFragment;
 
 public class MainActivity extends AppCompatActivity implements CommunicatorMain, NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -52,7 +53,9 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tabHostAdding();
+        mojManager = MOJManager.getMOJManager(this);
         userName = this.getIntent().getStringExtra("userID");
+
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -64,7 +67,9 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
         tvHeaderDrawerUserName = (TextView) findViewById(R.id.tv_drawer_header_useName_tv);
         if (!userName.equals("guest")) {
-            tvHeaderDrawerUserName.setText("Welcome to Ministry of Juctise App, "+userName);
+            User user = mojManager.findUserById(userName);
+            String name = user.getName();
+            tvHeaderDrawerUserName.setText("Welcome to Ministry of Juctise App, "+name);
         }else if (userName.equals("guest")) {
             tvHeaderDrawerUserName.setText("Welcome to Ministry of Juctise App, "+userName);
         }

@@ -16,4 +16,15 @@
 
     <string name="action_example">Example action</string>
     <string name="title_activity_maps">Map</string>
+
+    <string-array name="sections_icons">
+        <item>@drawable/mapicon</item>
+        <item>@drawable/loginicon</item>
+
+    </string-array>
+    <string-array name="sections_icons_out">
+        <item>@drawable/mapicon</item>
+        <item>@drawable/exit</item>
+
+    </string-array>
 </resources>

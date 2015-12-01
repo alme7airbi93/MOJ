@@ -55,7 +55,7 @@ public class Login extends Fragment
         {
             @Override
             public void onClick(View v) {
-//                User user= new User("12345", "mohammad", "0503151445", "kha", "guest", "guest","guest");
+//                User user= new User("12345", "mohammad", "0503151445", "kha", "123", "123","123");
 //                mojManager.addUser(user);
 //                Toast.makeText(getActivity(),"Added",Toast.LENGTH_LONG).show();
 //                user = mojManager.findUserByUserName("alme7airbi");

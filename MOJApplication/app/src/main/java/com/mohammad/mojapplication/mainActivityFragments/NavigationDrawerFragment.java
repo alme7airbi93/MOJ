@@ -1,5 +1,7 @@
 package com.mohammad.mojapplication.mainActivityFragments;
 
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.app.Activity;
 import android.support.v7.app.ActionBar;
@@ -20,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mohammad.mojapplication.R;
@@ -104,30 +107,51 @@ public class NavigationDrawerFragment extends Fragment {
         userName = getActivity().getIntent().getStringExtra("userID");
 
         View header = inflater.inflate(R.layout.drawer_header_layout, null, false);
+        final TypedArray typedArray = getResources().obtainTypedArray(R.array.sections_icons);
+        final TypedArray typedArrayout = getResources().obtainTypedArray(R.array.sections_icons);
         mDrawerListView.addHeaderView(header);
         if(!userName.equals("guest"))
         {
             mDrawerListView.setAdapter(new ArrayAdapter<String>(
                     getActionBar().getThemedContext(),
                     android.R.layout.simple_list_item_activated_1,
-                    android.R.id.text1,
-                    new String[]{
-                            getString(R.string.title_section_location),
-                            getString(R.string.title_section_logout),
-//                        getString(R.string.title_section3),
-                    }));
+                    android.R.id.text1,new String[]{
+                    getString(R.string.title_section_location),
+                    getString(R.string.title_section_logout),
+            }
+            ) {
+                @Override
+                public View getView(int position, View convertView, ViewGroup parent) {
+                    View v = super.getView(position, convertView, parent);
+                    int resourceId = typedArray.getResourceId(position, 0);
+                    Drawable drawable = getResources().getDrawable(resourceId);
+                    ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
+                    return v;
+                }
+            });
         }else if (userName.equals("guest"))
         {
             mDrawerListView.setAdapter(new ArrayAdapter<String>(
                     getActionBar().getThemedContext(),
                     android.R.layout.simple_list_item_activated_1,
-                    android.R.id.text1,
-                    new String[]{
-                            getString(R.string.title_section_location),
-                            getString(R.string.title_section_login),
-//                        getString(R.string.title_section3),
-                    }));
+                    android.R.id.text1,new String[]{
+                    getString(R.string.title_section_location),
+                    getString(R.string.title_section_login),
+            }
+            ) {
+                @Override
+                public View getView(int position, View convertView, ViewGroup parent) {
+                    View v = super.getView(position, convertView, parent);
+                    int resourceId = typedArray.getResourceId(position, 0);
+                    Drawable drawable = getResources().getDrawable(resourceId);
+                    ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
+                    return v;
+                }
+            });
         }
+
+
+
 
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;
