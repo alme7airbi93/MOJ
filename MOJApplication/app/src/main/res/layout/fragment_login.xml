@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:orientation="vertical" android:layout_width="match_parent"
 
+    android:background="@drawable/loginnew"
                 android:layout_height="match_parent">
 
     <LinearLayout
@@ -21,7 +22,8 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
+        android:layout_marginRight="20dp"
+        android:background="#52fafeff">
 
         <TextView
         android:layout_width="match_parent"

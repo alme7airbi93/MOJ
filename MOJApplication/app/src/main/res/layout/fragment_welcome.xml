@@ -4,7 +4,7 @@
                 android:layout_height="match_parent"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-    android:background="#12ff9a26"
+    android:background="@drawable/welcomenewone"
     android:orientation="vertical" >
 
 
@@ -15,9 +15,10 @@
     android:textSize="30dp"
     android:paddingTop="20dp"
     android:paddingBottom="20dp"
+    android:textColor="#000"
 
 
-    />
+    android:background="#72ffffff" />
     <TextView
         android:layout_marginTop="50dp"
         android:layout_width="match_parent"
@@ -34,7 +35,7 @@
     android:orientation="vertical"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
-    android:background="#00e1e1ff">
+    android:background="#5be1e1ff">
     <TextView
 
         android:textColor="#000"

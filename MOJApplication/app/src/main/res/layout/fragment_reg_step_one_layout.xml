@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
 
     android:id="@+id/step1fragment"
-    android:background="#1a010001">
+    android:background="@drawable/registers">
 
     <TextView
         android:layout_marginRight="30dp"
