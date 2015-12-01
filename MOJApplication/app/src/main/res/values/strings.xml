@@ -18,13 +18,13 @@
     <string name="title_activity_maps">Map</string>
 
     <string-array name="sections_icons">
-        <item>@drawable/mapicon</item>
-        <item>@drawable/loginicon</item>
+        <item>@drawable/googlemap</item>
+        <item>@drawable/drawericnloginfix</item>
 
     </string-array>
     <string-array name="sections_icons_out">
-        <item>@drawable/mapicon</item>
-        <item>@drawable/exit</item>
+        <item>@drawable/googlemap</item>
+        <item>@drawable/drawericonlogout</item>
 
     </string-array>
 </resources>
