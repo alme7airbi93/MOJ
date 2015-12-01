@@ -108,7 +108,7 @@ public class NavigationDrawerFragment extends Fragment {
 
         View header = inflater.inflate(R.layout.drawer_header_layout, null, false);
         final TypedArray typedArray = getResources().obtainTypedArray(R.array.sections_icons);
-        final TypedArray typedArrayout = getResources().obtainTypedArray(R.array.sections_icons);
+        final TypedArray typedArrayout = getResources().obtainTypedArray(R.array.sections_icons_out);
         mDrawerListView.addHeaderView(header);
         if(!userName.equals("guest"))
         {
@@ -123,7 +123,7 @@ public class NavigationDrawerFragment extends Fragment {
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent) {
                     View v = super.getView(position, convertView, parent);
-                    int resourceId = typedArray.getResourceId(position, 0);
+                    int resourceId = typedArrayout.getResourceId(position, 0);
                     Drawable drawable = getResources().getDrawable(resourceId);
                     ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
                     return v;
