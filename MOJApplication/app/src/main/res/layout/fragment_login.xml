@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="vertical"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:background="@drawable/loginnew"
-                android:layout_height="match_parent">
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></LinearLayout>
+
     <TextView
         android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-    android:transitionGroup="false"
-    android:background="#FAFAD2"/>
+        android:layout_height="match_parent"
+        android:transitionGroup="false"
+        android:background="#FAFAD2"/>
 
     <LinearLayout
         android:layout_marginTop="80dp"
@@ -26,11 +25,11 @@
         android:background="#52fafeff">
 
         <TextView
-            android:textColor="#fff"
+        android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Enter username:"
+        android:text="Enter username :"
         android:id="@+id/tvUser"
         android:textSize="25dp"
         android:layout_gravity="center_horizontal"
@@ -39,21 +38,21 @@
         android:layout_centerHorizontal="true" />
 
         <EditText
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:id="@+id/etUserLog"
             android:layout_below="@+id/tvUser"
             android:layout_centerHorizontal="true"
             android:background="#fff" />
 
         <TextView
-            android:textColor="#fff"
+            android:textStyle="bold"
             android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Enter Password:"
+            android:text="Enter Password :"
             android:id="@+id/tvPass"
             android:textSize="25dp"
             android:layout_gravity="center_horizontal"
@@ -62,15 +61,13 @@
             android:layout_centerVertical="true" />
 
         <EditText
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:inputType="textPassword"
             android:ems="10"
             android:id="@+id/etPassLog"
             android:layout_below="@+id/tvPass"
-
-            android:layout_centerHorizontal="true"
             android:background="#fff" />
 
         <Button
@@ -79,13 +76,7 @@
             android:text="Sign In"
             android:layout_marginTop="20dp"
             android:id="@+id/btnSignIn"
-
-
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="20dp"
-            android:background="#EEE8AA" />
+            android:layout_marginBottom="20dp" />
     </LinearLayout>
 
 

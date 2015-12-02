@@ -116,6 +116,7 @@ public class NavigationDrawerFragment extends Fragment {
                     getActionBar().getThemedContext(),
                     android.R.layout.simple_list_item_activated_1,
                     android.R.id.text1,new String[]{
+                    getString(R.string.title_section_about_us_activity),
                     getString(R.string.title_section_location),
                     getString(R.string.title_section_logout),
             }
@@ -135,6 +136,7 @@ public class NavigationDrawerFragment extends Fragment {
                     getActionBar().getThemedContext(),
                     android.R.layout.simple_list_item_activated_1,
                     android.R.id.text1,new String[]{
+                    getString(R.string.title_section_about_us_activity),
                     getString(R.string.title_section_location),
                     getString(R.string.title_section_login),
             }
@@ -288,12 +290,6 @@ public class NavigationDrawerFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-
-    public void setUserName(String string)
-    {
-        this.userName = string;
-
-    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (mDrawerToggle.onOptionsItemSelected(item)) {

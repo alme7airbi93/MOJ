@@ -218,9 +218,12 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
 
                 break;
             case 1:
-                i = new Intent(this, MapsActivity.class);
+                i = new Intent(this, AboutUsActivity.class);
                 break;
             case 2:
+                i = new Intent(this, MapsActivity.class);
+                break;
+            case 3:
                 i = new Intent(this, RegistrationActivity.class);
                 break;
         }
